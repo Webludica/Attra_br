@@ -20,16 +20,16 @@
 
 // ** Configurações do MySQL - Você pode pegar estas informações com o serviço de hospedagem ** //
 /** O nome do banco de dados do WordPress */
-define('DB_NAME', 'thiagoabreu_attra_br_principal');
+define('DB_NAME', 'attra_br');
 
 /** Usuário do banco de dados MySQL */
-define('DB_USER', 'thiagoabreu_webludic_admin');
+define('DB_USER', 'root');
 
 /** Senha do banco de dados MySQL */
-define('DB_PASSWORD', 'webtab2017');
+define('DB_PASSWORD', '');
 
 /** Nome do host do MySQL */
-define('DB_HOST', '149.56.247.112');
+define('DB_HOST', 'localhost');
 
 /** Charset do banco de dados a ser usado na criação das tabelas. */
 define('DB_CHARSET', 'utf8mb4');
