@@ -1,12 +1,4 @@
 
 # BEGIN WordPress
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /projetos/attra_br/
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /projetos/attra_br/index.php [L]
-</IfModule>
 
 # END WordPress
