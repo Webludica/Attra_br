@@ -23,7 +23,7 @@
 define('DB_NAME', 'thiagoabreu_attra_br_principal');
 
 /** Usuário do banco de dados MySQL */
-define('DB_USER', 'thiagoabreu_webludic_admin_2');
+define('DB_USER', 'thiagoabreu_webludic_admin');
 
 /** Senha do banco de dados MySQL */
 define('DB_PASSWORD', 'webtab2017');
