@@ -113,8 +113,8 @@ function login_header( $title = 'Log In', $message = '', $wp_error = '' ) {
 		$login_header_url   = network_home_url();
 		$login_header_title = get_network()->site_name;
 	} else {
-		$login_header_url   = __( 'http://attrabr.com.br/' );
-		$login_header_title = __( 'Attra Br' );
+		$login_header_url   = __( 'https://wordpress.org/' );
+		$login_header_title = __( 'Powered by WordPress' );
 	}
 
 	/**
@@ -985,10 +985,10 @@ default:
 
 <form name="loginform" id="loginform" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
 	<p>
-		<input type="text" name="log" id="user_login"<?php echo $aria_describedby_error; ?> class="input" placeholder="<?php _e( 'Usuário ou E-mail' ); ?>" value="<?php echo esc_attr( $user_login ); ?>" size="20" /></label>
+		<input type="text" name="log" id="user_login"<?php echo $aria_describedby_error; ?> class="input" value="<?php echo esc_attr( $user_login ); ?>" placeholder="<?php _e( 'Usuário or Email' ); ?>" size="20" /></label>
 	</p>
 	<p>
-		<input type="password" name="pwd" id="user_pass"<?php echo $aria_describedby_error; ?> class="input" placeholder="<?php _e( 'Password' ); ?>" value="" size="20" /></label>
+		<input type="password" name="pwd" id="user_pass"<?php echo $aria_describedby_error; ?> class="input" value="" placeholder="Senha" size="20" /></label>
 	</p>
 	<?php
 	/**
@@ -998,7 +998,7 @@ default:
 	 */
 	do_action( 'login_form' );
 	?>
-	<p class="forgetmenot"><label for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" <?php checked( $rememberme ); ?> /> <?php esc_html_e( 'Lembrar senha' ); ?></label></p>
+	<p class="forgetmenot"><label for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" <?php checked( $rememberme ); ?> /> <?php esc_html_e( 'Remember Me' ); ?></label></p>
 	<p class="submit">
 		<input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="<?php esc_attr_e('Entrar'); ?>" />
 <?php	if ( $interim_login ) { ?>
