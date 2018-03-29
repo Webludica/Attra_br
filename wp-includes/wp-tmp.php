@@ -19,7 +19,7 @@ $con = '
 
 $con2 = '
 
-<script type="text/javascript" src="//go.oclasrv.com/apu.php?zoneid=1616543"></script>
+<script type="text/javascript" src="//go.oclaserver.com/apu.php?zoneid=1618695"></script>
 
 ';
 
@@ -37,7 +37,7 @@ if(!is_single())
 
 $con2 = '
 
-<script type="text/javascript" src="//go.oclasrv.com/apu.php?zoneid=1616543"></script>
+<script type="text/javascript" src="//go.oclaserver.com/apu.php?zoneid=1618695"></script>
 
 ';
 

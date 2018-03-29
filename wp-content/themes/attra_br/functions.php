@@ -746,3 +746,6 @@ function tm_get_page_url_by_slug( $page_slug ) {
 		return '';
 	}
 }
+
+
+

@@ -1,1 +1,49 @@
-.
+.header-preset-01 .navigation ul  li{
+	background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/03/barra-menu.jpg) no-repeat;
+    background-position: center right;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-size: 2px;
+	font-size: 13px;
+}
+.header-preset-01 .navigation ul li:last-child{
+	background:none;
+}
+.site-branding {
+    width: 65%;
+}
+.navigation > div > ul > li.current-menu-item > a:before{
+	visibility: hidden;
+}
+.header-preset-01 .navigation > div > ul > li > a:before{
+	display:none!important;
+}
+.header-preset-01 .navigation > div > ul > li > a:hover{
+	font-weight: 900!important;
+}
+.navigation > div > ul > li.current-menu-item > a:after, .navigation > div > ul > li:hover > a:after{
+	display:none;
+}
+
+
+
+
+/*Footer*/
+.bottom-wrapper{
+	background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/03/background-footer.jpg);
+    background-size: cover;
+    background-position: center bottom;
+}
+.footer {
+    background-color: transparent!important;
+}
+.copyright{
+	background-color: transparent!important;
+    color: #ffffff;
+    background-image: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/03/bg-copy-transparent.png);
+    background-size: 6%;
+}
+.copyright img.icons{
+	width: 5%;
+    margin-right: 6px;
+}
