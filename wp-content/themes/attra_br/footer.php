@@ -12,16 +12,16 @@
 		<footer <?php footer_class(); ?> role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-5">
 						<?php dynamic_sidebar( 'footer' ); ?>
 						<div class="social">
 							<?php wp_nav_menu( array( 'theme_location' => 'social', 'fallback_cb' => false ) ); ?>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-2 hidden-xs">
 						<?php dynamic_sidebar( 'footer2' ); ?>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-5">
 						<?php dynamic_sidebar( 'footer3' ); ?>
 					</div>
 				</div>

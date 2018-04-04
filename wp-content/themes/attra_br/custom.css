@@ -20,12 +20,107 @@
 }
 .header-preset-01 .navigation > div > ul > li > a:hover{
 	font-weight: 900!important;
+	transition-duration: 1s;
 }
 .navigation > div > ul > li.current-menu-item > a:after, .navigation > div > ul > li:hover > a:after{
 	display:none;
 }
 
+.scrollup.show {
+	background-image: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/top.jpg);
+    background-size: cover;
+    background-color: transparent;
+}
+.scrollup i {
+    display: none;
+}
 
+/*Navigation Slider*/
+
+.persephone .tp-bullet:hover, .persephone .tp-bullet.selected{
+	background: transparent;
+    border: 2px solid #333;
+}
+.persephone .tp-bullet{
+	background: rgb(149, 149, 149);
+    border: 2px solid transparent;
+}
+.slider-home-mobile{
+	display: none;
+}
+
+/*Conteudo Home*/
+
+.titulo h2{
+	margin-top: 60px;
+    margin-bottom: 20px!important;
+    background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/barrinha-title.png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+	padding-bottom: 20px;
+}
+.conteudo-1{
+	margin-top: 30px!important;
+}
+.conteudo-1 p{
+	text-align: right;
+}
+.conteudo-1 h2{
+	margin-top: 80px;
+}
+.conteudo-1 .coluna-3{
+	height: 500px;
+    display: flex;
+    align-items: flex-end;
+}
+.conteudo-1 .coluna-3 a{
+	color: #fff;
+    background-color: #2A2A2A;
+    width: 70%;
+    text-align: right;
+    margin-bottom: 5px;
+}
+.conteudo-2{
+	margin-top: 40px!important;
+}
+.conteudo-2 .carousel-slider .owl-nav.disabled{
+	display: block;
+}
+.conteudo-2 .owl-next{
+	margin-right: 30px!important;
+    height: 58px!important;
+    width: 38px!important;
+    background: #181818!important;
+    border-radius: 5px;
+}
+.conteudo-2 .owl-prev{
+	margin-left: 30px!important;
+	height: 58px!important;
+    width: 38px!important;
+    background: #181818!important;
+    border-radius: 5px;
+}
+.conteudo-2 #id-128 .carousel-slider-nav-icon{
+	height: 58px!important;
+	width: 28px!important;
+ }
+.conteudo-3{
+	height: 600px;
+    background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/background-conteudo-3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+	margin-top:10px!important;
+}
+.conteudo-3 h2{
+	margin-top: 120px;
+}
+.conteudo-3 p{
+	color: #fff;
+    background: #181818;
+    width: 50%;
+    padding: 40px 35px;
+}
 
 
 /*Footer*/
@@ -36,6 +131,20 @@
 }
 .footer {
     background-color: transparent!important;
+	color:#fff;
+}
+.footer img{
+    width: 70%;
+}
+.footer a {
+    color: #fff;
+}
+.footer .widget-title {
+    color: #ffffff;
+    font-weight: 900!important;
+}
+.footer .widget-title:after{
+	display:none;
 }
 .copyright{
 	background-color: transparent!important;
@@ -43,7 +152,23 @@
     background-image: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/03/bg-copy-transparent.png);
     background-size: 6%;
 }
+.copyright .logo-copy{
+	text-align:left;
+}
+.copyright .redes-copy{
+	text-align:right;
+}
 .copyright img.icons{
 	width: 5%;
     margin-right: 6px;
 }
+
+
+
+
+
+
+
+
+
+
