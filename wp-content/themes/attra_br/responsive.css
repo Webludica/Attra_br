@@ -62,7 +62,43 @@
 			margin-left: 50px;
 			font-size: 22px;
 		}
-		
+		.conteudo-4 h2 {
+			margin-top: 30px;
+		}
+		.conteudo-4 img{
+			width: 100%;
+			padding-left: 0px;
+		}
+		.conteudo-4 p{
+			font-size: 13px;
+			line-height: 1.6;
+		}
+		.conteudo-5 h2 {
+			margin-top: 30px;
+			text-align: center!important;
+		}
+		.conteudo-5 p {
+			text-align: center;
+			font-size: 13px;
+			line-height: 1.6;
+			margin-top: 20px;
+		}
+		.conteudo-5 img {
+			margin-top: 30px;
+			margin-bottom: 40px;
+		}
+		.conteudo-6 h2 {
+			margin-top: 20px;
+		}
+		.conteudo-6 .carousel-slider__post-image {
+			border-radius: 0px;
+		}
+		.conteudo-6 #id-169 .carousel-slider__post {
+			height: 260px!important;
+		}
+		.conteudo-6 .carousel-slider__post-title h1 {
+			font-size: 12px;
+		}
 	  
 	  /*Footer*/
 		.copyright img.icons {
@@ -145,7 +181,44 @@
 			font-size: 22px;
 			font-weight: 900!important;
 		}
-		
+		.conteudo-4 h2 {
+			margin-top: 30px;
+			text-align:center!important;
+		}
+		.conteudo-4 img{
+			width: 100%;
+			padding-left: 0px;
+		}
+		.conteudo-4 p{
+			font-size: 13px;
+			line-height: 1.6;
+			text-align: center;
+			margin-top: 10px;
+		}
+		.conteudo-5 h2 {
+			margin-top: 30px;
+			text-align: center!important;
+		}
+		.conteudo-5 p {
+			text-align: center;
+			font-size: 13px;
+			line-height: 1.6;
+			margin-top: 20px;
+		}
+		.conteudo-5 img {
+			margin-top: 30px;
+			margin-bottom: 40px;
+		}
+		.conteudo-6 h2 {
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		.conteudo-6 #id-169 .carousel-slider__post {
+			height: 260px!important;
+		}
+		.conteudo-6 .carousel-slider__post-title h1 {
+			font-size: 12px;
+		}
 		
 	  
 	  /*Footer*/
@@ -189,10 +262,31 @@
 			padding: 40px 20px;
 			font-size: 12px;
 		}
-	  .conteudo-3 {
+		.conteudo-3 {
 			min-height: 600px;
 		}
-	  
+		.conteudo-4 img {
+			width: 100%!important;
+			padding-left: 70px;
+		}
+		.conteudo-4 p{
+			font-size: 12px;
+		}
+		.conteudo-4 h2 {
+			margin-top: 60px;
+		}
+		.conteudo-5 p {
+			text-align: right;
+			font-size: 12px;
+			line-height: 1.2;
+		}
+		.conteudo-5 {
+			min-height: 420px;
+		}
+		.conteudo-6 #id-169 .carousel-slider__post {
+			height: 280px!important;
+		}
+		
 	   /*Footer*/
 		.footer img {
 			width: 40%;
@@ -210,6 +304,9 @@
 	}
 	.conteudo-3 p {
 		width: 70%;
+	}
+	.conteudo-4 h2 {
+		margin-top: 110px;
 	}
 	
 }

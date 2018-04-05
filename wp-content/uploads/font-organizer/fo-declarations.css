@@ -2,6 +2,13 @@
 
 
 @font-face {
+    font-family: 'Arson Pro Bold';
+    
+    src: url('//localhost/projetos/attra_br/wp-content/uploads/font-organizer/Arson-Pro-Bold.otf') format('opentype');
+font-weight: 700;
+}
+
+@font-face {
     font-family: 'Arson Pro Regular';
     
     src: url('//localhost/projetos/attra_br/wp-content/uploads/font-organizer/Arson-Pro-Regular.otf') format('opentype');

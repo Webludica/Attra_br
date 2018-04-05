@@ -35,6 +35,10 @@
     display: none;
 }
 
+strong{
+	font-family:"Arson Pro Bold";
+}
+
 /*Navigation Slider*/
 
 .persephone .tp-bullet:hover, .persephone .tp-bullet.selected{
@@ -58,6 +62,9 @@
     background-repeat: no-repeat;
     background-position: center bottom;
 	padding-bottom: 20px;
+}
+.titulo p{
+	line-height: 1.2;
 }
 .conteudo-1{
 	margin-top: 30px!important;
@@ -121,11 +128,109 @@
     width: 50%;
     padding: 40px 35px;
 }
+.conteudo-4 h2{
+	margin-top: 140px;
+}
+.conteudo-4 img{
+	width: 80%;
+    padding-left: 70px;
+}
+.conteudo-5{
+	min-height: 500px;
+    background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/background-empresa.jpg);
+    background-size: contain;
+	margin-top: 40px!important;
+}
+.conteudo-5 p{
+	text-align:right;
+}
+.conteudo-5 h2{
+	margin-top: 120px;
+}
+.conteudo-5 img{
+	margin-top: 90px;
+}
+.conteudo-6 h2{
+	margin-top: 50px;
+    margin-bottom: 20px;
+}
+/*Slider de Posts*/
+.conteudo-6 .carousel-slider .owl-nav{
+	display: block!important;
+}
+.conteudo-6 #id-169 .owl-prev{
+    width: 38px;
+    height: 38px;
+}
+.conteudo-6 #id-169 .carousel-slider-nav-icon{
+	height: 38px!important;
+    width: 38px!important;
+}
+.conteudo-6 .carousel-slider.owl-loaded {
+    padding: 0 60px;
+}
+.conteudo-6 .carousel-slider__post-title h1{
+	font-size: 12px;
+}
+.conteudo-6 .carousel-slider__post-excerpt{
+	display: none!important;
+}
+.conteudo-6 .carousel-slider__post-author-link{
+	display: none!important;
+}
+.conteudo-6 #id-169 .carousel-slider__post {
+	height: 270px;
+	border: 0px;
+}
+.conteudo-6 .carousel-slider__post-category{
+	display: none;
+}
+.conteudo-6  .carousel-slider__post-image{
+	border-radius: 20px;
+	height: 157px;
+	background-size: cover;
+    background-position: center bottom;
+}
+.conteudo-6 .carousel-slider__post-publication-meta{
+	background-color: transparent;
+}
 
+/* Fim de Slider de Posts*/
+
+/*Slider de Vídeos*/
+
+.conteudo-7 h2{
+	margin-top: 50px;
+	margin-bottom: 20px;
+}
+.conteudo-7 .carousel-slider .owl-nav{
+	display: block!important;
+}
+.conteudo-7 #id-175 .owl-prev{
+    width: 38px;
+    height: 38px;
+}
+.conteudo-7 #id-175 .carousel-slider-nav-icon{
+	height: 38px!important;
+    width: 38px!important;
+}
+.conteudo-7 #id-175.arrows-outside .owl-prev {
+    left: 0px;
+}
+.conteudo-7 #id-175.arrows-outside .owl-next {
+    right: 0;
+}
+.conteudo-7 .carousel-slider .carousel-slider__caption .title {
+    text-align: left;
+    font-size: 12px;
+}
+.conteudo-7 .carousel-slider.owl-loaded {
+    padding: 0 60px;
+}
 
 /*Footer*/
 .bottom-wrapper{
-	background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/03/background-footer.jpg);
+	background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/background-footer-2.jpg);
     background-size: cover;
     background-position: center bottom;
 }
