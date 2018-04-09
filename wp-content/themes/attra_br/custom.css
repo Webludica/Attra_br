@@ -186,7 +186,7 @@ strong{
 	display: none;
 }
 .conteudo-6  .carousel-slider__post-image{
-	border-radius: 20px;
+	border-radius: 10px;
 	height: 157px;
 	background-size: cover;
     background-position: center bottom;
@@ -228,7 +228,7 @@ strong{
     padding: 0 60px;
 }
 .conteudo-8{
-	background: #ebeaef;
+	background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/background-contato.jpg);
     padding-top: 90px;
     margin-top: 60px!important;
     padding-bottom: 80px;
@@ -281,7 +281,63 @@ strong{
     border: 2px solid #353334;
 }
 
+/*Página Painéis*/
 
+.content {
+    padding: 0!important;
+}
+.page-id-194 .breadcrumb .container {
+    background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/paineis-decorativos.png) no-repeat;
+    background-position: center center;
+    background-size: 20%;
+	height:100px;
+}
+
+.page-id-194 .breadcrumb ul {
+   display:none;
+}
+.breadcrumb {
+    background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/background-breadcrumb.jpg);
+	border-bottom: 0px!important;
+    border-top: 0px!important;
+}
+
+.linhas img:hover{
+	opacity: 0.6;
+    transition-duration: 1s;
+    cursor: pointer;
+}
+.linhas .mobile{
+	display:none;
+}
+.linhas h3{
+	margin-top: 30px;
+    margin-bottom: 30px;
+}
+.outros-paineis{
+	background: #f8f8f8;
+    margin-top: 70px!important;
+    padding-top: 80px;
+    padding-bottom: 70px;
+}
+.outros-paineis p{
+	text-align: right;
+    margin-top: 30px;
+}
+.outros-paineis .mobile{
+	display:none;
+}
+.outros-paineis .titulo h2 {
+    background-position: right bottom;
+}
+.outros-paineis .botoes {
+	margin-top: 120px;
+}
+.outros-paineis a {
+	width: 70%;
+    text-align: right!important;
+    margin-bottom: 5px!important;
+}
 
 
 
