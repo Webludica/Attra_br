@@ -3,14 +3,21 @@
     background-position: center right;
     padding-right: 10px;
     padding-left: 10px;
-    background-size: 2px;
-	font-size: 13px;
+		font-size: 13px;
 }
 .header-preset-01 .navigation ul li:last-child{
 	background:none;
 }
-.site-branding {
-    width: 65%;
+.navigation > div > ul > li > a{
+	letter-spacing: 0!important;
+	font-size: 13px!important;
+}
+.primary-menu ul li.current-menu-item a{
+	font-family: 'Arson Pro bold'!important;
+}
+.site-branding img {
+	width: 50%;
+	image-rendering: -webkit-optimize-contrast;
 }
 .navigation > div > ul > li.current-menu-item > a:before{
 	visibility: hidden;
@@ -25,7 +32,9 @@
 .navigation > div > ul > li.current-menu-item > a:after, .navigation > div > ul > li:hover > a:after{
 	display:none;
 }
-
+.tp-mask-wrap .tp-caption{
+	font-family: 'Arson Pro bold'!important;
+}
 .scrollup.show {
 	background-image: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/top.jpg);
     background-size: cover;
@@ -43,11 +52,11 @@ strong{
 
 .persephone .tp-bullet:hover, .persephone .tp-bullet.selected{
 	background: transparent;
-    border: 2px solid #333;
+    border: 3px solid #333;
 }
 .persephone .tp-bullet{
-	background: rgb(149, 149, 149);
-    border: 2px solid transparent;
+	background: rgba(149, 149, 149,0.7);
+    border: 3px solid transparent;
 }
 .slider-home-mobile{
 	display: none;
@@ -518,13 +527,3 @@ strong{
 	width: 5%;
     margin-right: 6px;
 }
-
-
-
-
-
-
-
-
-
-
