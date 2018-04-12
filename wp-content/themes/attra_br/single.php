@@ -27,12 +27,12 @@ $layout = get_theme_mod( 'post_layout', post_layout );
 				<?php get_sidebar(); ?>
 			<?php } ?>
 			<?php if ( $layout == 'sidebar-content' || $layout == 'content-sidebar' ) { ?>
-				<?php $class = 'col-md-9'; ?>
+				<?php $class = 'col-md-12'; ?>
 			<?php } else { ?>
 				<?php $class = 'col-md-12'; ?>
 			<?php } ?>
 			<div class="<?php echo esc_attr( $class ); ?>">
-				<main class="content" role="main">
+				<main class="content blog-1" role="main">
 
 					<?php while ( have_posts() ) : the_post(); ?>
 

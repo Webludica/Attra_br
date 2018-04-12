@@ -11,7 +11,7 @@
 				<span class="date"><?php the_time( 'd' ); ?></span>
 				<span class="year"><?php the_time( 'Y' ); ?></span>
 				<span
-					class="comments-counts"><span><?php comments_number( '0', '1', '%' ); ?></span><?php comments_number( __( 'Comment', 'thememove' ), __( 'Comment', 'thememove' ), __( 'Comments', 'thememove' ) ); ?></span>
+					class="comments-counts"><span><?php comments_number( '0', '1', '%' ); ?></span><?php comments_number( __( 'Comentário', 'thememove' ), __( 'Comentário', 'thememove' ), __( 'Comentários', 'thememove' ) ); ?></span>
 			</div>
 			<?php the_post_thumbnail( array( 848, 450, 'bfi_thumb' => true ) ); ?>
 		</div>
@@ -21,9 +21,9 @@
 	</header>
 	<div class="entry-meta">
 		<span class="author vcard"><i
-				class="fa fa-user"></i> <?php echo __( 'Posted by ', 'thememove' ) . get_the_author(); ?></span>
+				class="fa fa-user"></i> <?php echo __( 'Postado por: ', 'thememove' ) . get_the_author(); ?></span>
 		<span class="categories-links"><i
-				class="fa fa-folder"></i> <?php echo __( 'In ', 'thememove' ) . get_the_category_list( __( ', ', 'thememove' ) ) ?> </span>
+				class="fa fa-folder"></i> <?php echo __( 'Em: ', 'thememove' ) . get_the_category_list( __( ', ', 'thememove' ) ) ?> </span>
 	</div>
 	<!-- .entry-meta -->
 	<div class="entry-content">
@@ -42,7 +42,7 @@
 			</div>
 			<div class="col-sm-4">
 				<div class="share">
-					<span><i class="fa fa-share-alt"></i> <?php echo __( 'Share: ', 'thememove' ); ?></span>
+					<span><i class="fa fa-share-alt"></i> <?php echo __( 'Compartilhe: ', 'thememove' ); ?></span>
 					<span><a target="_blank"
 					         href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink() ?>"><i
 								class="fa fa-facebook"></i></a></span>

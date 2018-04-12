@@ -191,8 +191,13 @@
 		.outros-paineis .produtos-relacionados {
 			padding: 0px 30px;
 		}	
-		
-
+		.outros-paineis .botoes .menores {
+			width: 100%;
+		}
+		.projects-grid p {
+			line-height: 1.1;
+			font-size: 12px;
+		}
 
 		/*Página Interna Produtos*/
 		
@@ -217,10 +222,10 @@
 			font-size: 9px!important;
 		}
 		.grid-projects-2 i {
-			width: 14px!important;
-			height: 14px!important;
-			padding-top: 0px!important;
-			padding-left: 1px!important;
+			    width: 16px!important;
+				height: 16px!important;
+				padding-top: 0px!important;
+				padding-left: 2px!important;
 		}
 		.outros-paineis-grid .titulo h2 {
 			text-align: center!important;
@@ -238,7 +243,15 @@
 		.conteudo-produto {
 			margin-top: 10px!important;
 		}	
+		/*Página do Post*/
 		
+		.single-post .breadcrumb li.level-3 {
+			line-height: 1.2;
+			font-size: 20px!important;
+		}
+		.single-post .blog-1 {
+			padding: 0!important;
+		}
 	  
 	  /*Footer*/
 		.copyright img.icons {
@@ -449,9 +462,17 @@
 			z-index: 9999;
 			top: -10px;
 		}
+		.projects-grid p {
+			line-height: 1.1;
+			font-size: 12px;
+		}
 		.outros-paineis .produtos-relacionados {
 			padding: 0px 50px;
-		}		
+		}
+		.outros-paineis .botoes .menores {
+			width: 100%;
+		}
+		
 		/*Página Interna dos produtos*/
 		
 		.conteudo-produto h3 {
@@ -475,10 +496,10 @@
 			font-size: 9px!important;
 		}
 		.grid-projects-2 i {
-			width: 14px!important;
-			height: 14px!important;
-			padding-top: 0px!important;
-			padding-left: 1px!important;
+			    width: 16px!important;
+				height: 16px!important;
+				padding-top: 0px!important;
+				padding-left: 3px!important;
 		}
 		.outros-paineis-grid .titulo h2 {
 			text-align: center!important;
@@ -496,6 +517,16 @@
 		.conteudo-produto {
 			margin-top: 10px!important;
 		}	
+		
+		/*Página do Post*/
+		
+		.single-post .breadcrumb li.level-3 {
+			line-height: 1.2;
+			font-size: 20px!important;
+		}
+		.single-post .blog-1 {
+			padding: 0!important;
+		}
 	  
 	  /*Footer*/
 		.copyright img.icons {
@@ -608,7 +639,7 @@
 			margin-top: 0px;
 		}
 		.projects-grid p{
-			font-size: 10px;
+			font-size: 9px;
 			line-height: 1.1;
 		}
 		.projects-grid .vc_btn3-container {
@@ -658,7 +689,7 @@
 			font-size: 9px!important;
 		}
 		.grid-projects-2 p{
-			font-size: 10px!important;
+			font-size: 9px!important;
 			line-height: 1.1!important;
 		}
 		.grid-projects-2 .vc_btn3-container {
@@ -668,10 +699,10 @@
 			z-index: 9999!important;
 		}
 		.grid-projects-2 i {
-			width: 14px!important;
-			height: 14px!important;
+			width: 16px!important;
+			height: 16px!important;
 			padding-top: 0px!important;
-			padding-left: 1px!important;
+			padding-left: 3px!important;
 		}
 		.grid-projects-2 .vc_btn3.vc_btn3-size-md.vc_btn3-icon-left:not(.vc_btn3-o-empty) {
 			padding-left: 20px!important;
@@ -688,6 +719,12 @@
 			line-height: 1.6;
 		}
 		
+		/*Página do Post*/
+		
+		.single-post .blog-1 {
+			padding: 0 20px!important;
+			margin-bottom: 40px;
+		}
 				
 		
 	   /*Footer*/
@@ -744,6 +781,9 @@
 		margin-top: -50px!important;
 		position: absolute;
 	}
+	.projects-grid i {
+		padding-top: 2px!important;
+	}
 	/*Página Interna Produtos*/
 	.outros-paineis-grid p {
 		text-align: right;
@@ -757,6 +797,17 @@
 	.grid-projects-2 .vc_btn3.vc_btn3-size-md.vc_btn3-icon-left:not(.vc_btn3-o-empty) {
 		padding-left: 30px;
 	}
+	.grid-projects-2 i {
+    padding-top: 2px!important;
+	}
+	
+	/*Página do Post*/
+		
+		.single-post .blog-1 {
+			padding: 0 20px!important;
+			margin-bottom: 40px;
+		}
+	
 	
 	
 }

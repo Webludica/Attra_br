@@ -73,20 +73,20 @@ if ( post_password_required() ) {
 	$req           = get_option( 'require_name_email' );
 	$aria_req      = ( $req ? " aria-required='true'" : '' );
 	$fields        = array(
-		'author' => '<div class="col-md-4"><p class="comment-form-author">' . '<input id="author" placeholder="' . __( 'Name *', 'thememove' ) . '" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></p></div>',
+		'author' => '<div class="col-md-4"><p class="comment-form-author">' . '<input id="author" placeholder="' . __( 'Nome *', 'thememove' ) . '" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></p></div>',
 		'email'  => '<div class="col-md-4"><p class="comment-form-email">' . '<input id="email" placeholder="' . __( 'Email *', 'thememove' ) . '" name="email" type="text" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></p></div>',
 		'url'    => '<div class="col-md-4"><p class="comment-form-url">' . '<input id="url" placeholder="' . __( 'Website', 'thememove' ) . '" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></p></div>',
 	);
 	$comments_args = array(
 		// change the title of send button
-		'label_submit'         => 'Submit',
+		'label_submit'         => 'Enviar',
 		// change the title of the reply section
-		'title_reply'          => 'Write a Reply or Comment',
+		'title_reply'          => 'Escreva um comentário',
 		// remove "Text or HTML to be displayed after the set of comment fields"
 		'comment_notes_after'  => '',
 		'comment_notes_before' => '',
 		'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
-		'comment_field'        => '<div class="col-md-12"><p class="comment-form-comment"><textarea id="comment" placeholder="' . __( 'Comment *', 'thememove' ) . '" name="comment" aria-required="true"></textarea></p></div>',
+		'comment_field'        => '<div class="col-md-12"><p class="comment-form-comment"><textarea id="comment" placeholder="' . __( 'Comentário *', 'thememove' ) . '" name="comment" aria-required="true"></textarea></p></div>',
 	);
 	comment_form( $comments_args ); ?>
 
