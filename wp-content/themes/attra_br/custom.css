@@ -12,9 +12,7 @@
 	letter-spacing: 0!important;
 	font-size: 13px!important;
 }
-.primary-menu ul li.current-menu-item a{
-	font-family: 'Arson Pro bold'!important;
-}
+
 .site-branding img {
 	width: 50%;
 	image-rendering: -webkit-optimize-contrast;
