@@ -29,7 +29,7 @@ $tm_infinity_default_template = get_post_meta( get_the_ID(), "_default_template"
 				<?php } ?>
 			</div>
 		</div>
-		<div class="container <?php echo $tm_infinity_default_template == 'yes' ? "project-default-template" : ""; ?>">
+		<div class="container-fluid <?php echo $tm_infinity_default_template == 'yes' ? "project-default-template" : ""; ?>">
 			<div class="row">
 				<?php
 				/**

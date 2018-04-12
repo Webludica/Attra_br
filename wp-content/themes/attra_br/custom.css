@@ -286,22 +286,6 @@ strong{
 .content {
     padding: 0!important;
 }
-.page-id-194 .breadcrumb .container {
-    background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/paineis-decorativos.png) no-repeat;
-    background-position: center center;
-    background-size: 20%;
-	height:100px;
-}
-
-.page-id-194 .breadcrumb ul {
-   display:none;
-}
-.breadcrumb {
-    background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/background-breadcrumb.jpg);
-	border-bottom: 0px!important;
-    border-top: 0px!important;
-}
-
 .linhas img:hover{
 	opacity: 0.6;
     transition-duration: 1s;
@@ -338,7 +322,161 @@ strong{
     text-align: right!important;
     margin-bottom: 5px!important;
 }
+/*Página Linhas*/
 
+
+.single-project .has-bg {
+	display:none;
+}
+.single-project .entry-title {
+    display: none;
+}
+.breadcrumb-projects{
+	background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/background-breadcrumb.jpg);
+    padding: 40px 0px;
+}
+.breadcrumb-projects h4{
+    font-size: 13px;
+}
+.breadcrumb-projects h3{
+    font-size: 26px!important;
+}
+.img-projects-desktop{
+	margin-top: 50px!important;
+}
+
+.img-projects-mobile{
+	display:none;
+}
+
+.title-project{
+	margin-top: 30px;
+}
+
+.projects-grid{
+	margin-top: 60px!important;
+}
+.projects-grid .vc_grid.vc_row .vc_grid-item{
+	float: left!important;
+}
+
+
+.projects-grid h2{
+	text-align: left;
+    font-size: 19px;
+    font-weight: bold!important;
+}
+.projects-grid p{
+	line-height: 1.2;
+}
+.projects-grid a{
+	background: transparent!important;
+    border: 0px!important;
+    color: #131313!important;
+}
+.projects-grid i{
+	border-radius: 13px!important;
+    left: 0px!important;
+    border: 1.3px solid #333!important;
+    width: 24px!important;
+    height: 24px!important;
+    padding-top: 5px!important;
+    padding-left: 4px!important;
+    font-weight: bold!important;
+}
+.projects-grid .vc_gitem-zone-a .vc_gitem-row-position-middle{
+    margin-top: -32px;
+}
+.projects-grid .vc_btn3-container{
+    margin-top: -40px!important;
+}
+.outros-paineis .produtos-relacionados{
+    padding: 0px 70px;
+}
+
+/*Página Interna Produtos*/
+
+.conteudo-produto{
+	margin-top: 50px!important;
+}
+.conteudo-produto h2{
+    font-size: 20px;
+    font-weight: bold!important;
+}
+.conteudo-produto p{
+    line-height: 1.2;
+    margin-top: 10px;
+}
+.conteudo-produto h3{
+	background: #131313;
+    color: #fff;
+    width: 70%;
+    padding: 15px 70px;
+    font-size: 13px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+.conteudo-produto p.especificacoes{
+    background: #fafafa;
+    width: 70%;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    font-size: 12px;
+    line-height: 1.7;
+	margin-top: 0px;
+}
+.conteudo-produto .compartilhe{
+	margin-top: 20px;
+}
+
+.grid-projects-2 .vc_grid.vc_row .vc_grid-item{
+	float: left!important;
+}
+
+.grid-projects-2 h2{
+	text-align: left!important;
+    font-size: 19px;
+    font-weight: bold!important;
+}
+.grid-projects-2 p{
+	line-height: 1.2;
+	text-align: left!important;
+}
+.grid-projects-2 a{
+	background: transparent!important;
+    border: 0px!important;
+    color: #131313!important;
+	width: 100%;
+}
+.grid-projects-2 i{
+	border-radius: 13px!important;
+    left: 0px!important;
+    border: 1.3px solid #333!important;
+    width: 24px!important;
+    height: 24px!important;
+    padding-top: 5px!important;
+    padding-left: 4px!important;
+    font-weight: bold!important;
+	padding-right: 2px;
+}
+.grid-projects-2 .vc_gitem-zone-a .vc_gitem-row-position-middle{
+    margin-top: -12px;
+}
+
+.outros-paineis-grid{
+	background: #f8f8f8;
+    margin-top: 70px!important;
+    padding-top: 30px;
+    padding-bottom: 70px;
+}
+.outros-paineis-grid p{
+	text-align: right;
+    margin-top: 30px;
+}
+.outros-paineis-grid .titulo h2 {
+    background-position: right bottom;
+}
 
 
 /*Footer*/
