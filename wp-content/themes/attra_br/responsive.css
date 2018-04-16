@@ -1,6 +1,6 @@
 /* =============================== 320px ==================================== */
 
-@media screen and (min-width: 320px) and (max-width: 599px) { 
+@media screen and (min-width: 320px) and (max-width: 599px) {
 		.slider-home-mobile {
 			display: block;
 		}
@@ -99,7 +99,7 @@
 		.conteudo-6 .carousel-slider__post-title h1 {
 			font-size: 12px;
 		}
-		
+
 		.conteudo-8 {
 			padding-top: 50px;
 		}
@@ -118,9 +118,9 @@
 		.conteudo-8 h3 {
 			margin-top: 30px;
 		}
-		
+
 		/*Página Painéis*/
-		
+
 		.linhas h3 {
 			margin-top: 10px;
 		}
@@ -159,7 +159,7 @@
 			margin-top: 30px;
 		}
 		/*Pagina Linhas*/
-		
+
 		.projects-grid{
 			margin-top: 10px!important;
 		}
@@ -190,7 +190,7 @@
 		}
 		.outros-paineis .produtos-relacionados {
 			padding: 0px 30px;
-		}	
+		}
 		.outros-paineis .botoes .menores {
 			width: 100%;
 		}
@@ -200,7 +200,7 @@
 		}
 
 		/*Página Interna Produtos*/
-		
+
 		.conteudo-produto h3 {
 			width: 100%;
 		}
@@ -210,7 +210,7 @@
 		.grid-projects-2 .vc_btn3.vc_btn3-size-md.vc_btn3-icon-left:not(.vc_btn3-o-empty) {
 			padding-left: 20px!important;
 			font-size: 12px;
-		}	
+		}
 		.grid-projects-2 .vc_gitem-zone-a .vc_gitem-row-position-middle {
 			margin-top: 0px;
 		}
@@ -242,9 +242,9 @@
 		}
 		.conteudo-produto {
 			margin-top: 10px!important;
-		}	
+		}
 		/*Página do Post*/
-		
+
 		.single-post .breadcrumb li.level-3 {
 			line-height: 1.2;
 			font-size: 20px!important;
@@ -252,7 +252,7 @@
 		.single-post .blog-1 {
 			padding: 0!important;
 		}
-	  
+
 	  /*Footer*/
 		.copyright img.icons {
 			width: 15%;
@@ -274,7 +274,7 @@
 
 /* =============================== 600px ==================================== */
 
-@media screen and (min-width: 600px) and (max-width: 767px) { 
+@media screen and (min-width: 600px) and (max-width: 767px) {
 		.slider-home-mobile {
 			display: block;
 		}
@@ -393,9 +393,9 @@
 		.conteudo-8 h3 {
 			margin-top: 30px;
 		}
-		
+
 		/*Página Painéis*/
-		
+
 		.linhas h3 {
 			margin-top: 10px;
 		}
@@ -433,9 +433,9 @@
 		.outros-paineis .botoes {
 			margin-top: 30px;
 		}
-		
+
 		/*Pagina Linhas*/
-		
+
 		.img-projects-mobile {
 			display: block;
 			margin-top: 30px;
@@ -446,7 +446,7 @@
 		.breadcrumb-projects h3 {
 			font-size: 22px!important;
 		}
-		
+
 		.projects-grid .vc_grid.vc_row .vc_grid-item{
 			float: none!important;
 		}
@@ -472,9 +472,9 @@
 		.outros-paineis .botoes .menores {
 			width: 100%;
 		}
-		
+
 		/*Página Interna dos produtos*/
-		
+
 		.conteudo-produto h3 {
 			width: 100%;
 		}
@@ -484,7 +484,7 @@
 		.grid-projects-2 .vc_btn3.vc_btn3-size-md.vc_btn3-icon-left:not(.vc_btn3-o-empty) {
 			padding-left: 20px!important;
 			font-size: 12px;
-		}	
+		}
 		.grid-projects-2 .vc_gitem-zone-a .vc_gitem-row-position-middle {
 			margin-top: 0px;
 		}
@@ -516,10 +516,10 @@
 		}
 		.conteudo-produto {
 			margin-top: 10px!important;
-		}	
-		
+		}
+
 		/*Página do Post*/
-		
+
 		.single-post .breadcrumb li.level-3 {
 			line-height: 1.2;
 			font-size: 20px!important;
@@ -527,7 +527,7 @@
 		.single-post .blog-1 {
 			padding: 0!important;
 		}
-	  
+
 	  /*Footer*/
 		.copyright img.icons {
 			width: 15%;
@@ -549,7 +549,7 @@
 
 /* =============================== 768px ==================================== */
 
-@media screen and (min-width: 768px) and (max-width: 1023px) { 
+@media screen and (min-width: 768px) and (max-width: 1023px) {
 		.conteudo-1 p {
 			font-size: 12px;
 		}
@@ -604,10 +604,10 @@
 			opacity: 0.7;
 			margin-left: 20px;
 		}
-		
+
 		/*Página Painéis*/
-		
-		
+
+
 		.outros-paineis .titulo h2 {
 			background-position: right bottom;
 			margin-top: 0px;
@@ -630,7 +630,7 @@
 			margin-bottom: -15px!important;
 			font-size: 12px!important;
 		}
-		
+
 		/*Página Linhas*/
 		.projects-grid h2 {
 			font-size: 12px;
@@ -657,13 +657,13 @@
 		}
 		.projects-grid .vc_btn3.vc_btn3-size-md.vc_btn3-icon-left:not(.vc_btn3-o-empty) {
 			padding-left: 30px;
-		}		
+		}
 		.outros-paineis .produtos-relacionados {
 			padding: 0px 50px;
 		}
 
 		/*Página Interna Produtos*/
-		
+
 		.conteudo-produto h3 {
 			width: 100%;
 			padding: 15px 40px;
@@ -707,7 +707,7 @@
 		.grid-projects-2 .vc_btn3.vc_btn3-size-md.vc_btn3-icon-left:not(.vc_btn3-o-empty) {
 			padding-left: 20px!important;
 			font-size: 10px!important;
-		}	
+		}
 		.outros-paineis-grid .titulo h2 {
 			background-position: right bottom;
 			margin-top: 0px;
@@ -718,15 +718,15 @@
 			font-size: 12px;
 			line-height: 1.6;
 		}
-		
+
 		/*Página do Post*/
-		
+
 		.single-post .blog-1 {
 			padding: 0 20px!important;
 			margin-bottom: 40px;
 		}
-				
-		
+
+
 	   /*Footer*/
 		.footer img {
 			width: 40%;
@@ -735,9 +735,31 @@
 
 /* =============================== 1024 ==================================== */
 
-@media screen and (min-width: 1024px) and (max-width: 1200px) { 
+@media screen and (min-width: 1024px) and (max-width: 1200px) {
+
+	.container {
+	    max-width: 100%!important;
+	    margin: 0 15px!important;
+	}
+	.navigation > div > ul > li > a {
+    letter-spacing: 0!important;
+    font-size: 14px!important;
+	}
+	.margin-btn-home .wpb_wrapper {
+    margin: 0 0 0 -60px;
+}
+.exclusividade {
+    padding: 0 0 0 0px!important;
+}
+.vc_custom_1523898795392 {
+    padding-left: 0 !important;
+}
+.formulario .container {
+    margin: 0!important;
+}
+
 	.conteudo-1 .coluna-3 {
-		height: 400px;
+		height: 450px;
 	}
 	.conteudo-1 .coluna-3 .vc_btn3-container {
 		margin-bottom: 6px!important;
@@ -800,15 +822,14 @@
 	.grid-projects-2 i {
     padding-top: 2px!important;
 	}
-	
+
 	/*Página do Post*/
-		
+
 		.single-post .blog-1 {
 			padding: 0 20px!important;
 			margin-bottom: 40px;
 		}
-	
-	
-	
-}
 
+
+
+}

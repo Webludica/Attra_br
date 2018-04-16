@@ -382,6 +382,15 @@ function thememove_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 4 Widget Area', 'thememove' ),
+		'id'            => 'footer4',
+		'description'   => '',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
 	if ( class_exists( 'SitePress' ) || class_exists( 'Polylang' ) ) {
 		register_sidebar( array(
 			'name'          => esc_html__( 'Language Widget Area', 'thememove' ),
@@ -746,6 +755,3 @@ function tm_get_page_url_by_slug( $page_slug ) {
 		return '';
 	}
 }
-
-
-

@@ -1,3 +1,33 @@
+.container {
+    max-width: 100%!important;
+    margin: 0 120px!important;
+}
+.boxed {
+    max-width: 100%!important;
+}
+.box-text-home p{
+	width: 300px;
+	display: inline-block;
+	float: right;
+	font-size: 18px;
+	line-height: 26px;
+}
+.margin-btn-home .wpb_wrapper{
+	margin: 0 0 0 -90px;
+}
+.margin-btn-home .vc_btn3.vc_btn3-color-black, .vc_btn3.vc_btn3-color-black.vc_btn3-style-flat{
+	background-color: #1e1e1e!important;
+}
+.margin-btn-home .vc_btn3.vc_btn3-color-black:hover {
+    background-color: #757575!important;
+}
+.vc_general.vc_btn3{
+	max-width: 300px;
+	font-size: 17px!important;
+	font-family: "Arson Pro Bold"!important;
+}
+
+
 .header-preset-01 .navigation ul  li{
 	background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/03/barra-menu.jpg) no-repeat;
     background-position: center right;
@@ -10,11 +40,10 @@
 }
 .navigation > div > ul > li > a{
 	letter-spacing: 0!important;
-	font-size: 13px!important;
+	font-size: 16px!important;
 }
 
 .site-branding img {
-	width: 50%;
 	image-rendering: -webkit-optimize-contrast;
 }
 .navigation > div > ul > li.current-menu-item > a:before{
@@ -24,8 +53,8 @@
 	display:none!important;
 }
 .header-preset-01 .navigation > div > ul > li > a:hover{
-	font-weight: 900!important;
-	transition-duration: 1s;
+	font-weight: 600!important;
+	transition: all 0.2s;
 }
 .navigation > div > ul > li.current-menu-item > a:after, .navigation > div > ul > li:hover > a:after{
 	display:none;
@@ -50,11 +79,11 @@ strong{
 
 .persephone .tp-bullet:hover, .persephone .tp-bullet.selected{
 	background: transparent;
-    border: 3px solid #333;
+    border: 4px solid #333;
 }
 .persephone .tp-bullet{
-	background: rgba(149, 149, 149,0.7);
-    border: 3px solid transparent;
+	background: rgba(0, 0, 0,0.2);
+    border: 4px solid transparent;
 }
 .slider-home-mobile{
 	display: none;
@@ -63,15 +92,25 @@ strong{
 /*Conteudo Home*/
 
 .titulo h2{
-	margin-top: 60px;
+	margin-top: 90px;
     margin-bottom: 20px!important;
-    background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/barrinha-title.png);
+    background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/zigzag.png);
     background-repeat: no-repeat;
     background-position: center bottom;
-	padding-bottom: 20px;
+	padding-bottom: 25px;
+}
+.titulo2 h2{
+	margin-top: 90px;
+  margin-bottom: 20px!important;
+	padding-bottom: 25px;
+}
+.titulo3 h2{
+	margin-top: 90px;
 }
 .titulo p{
-	line-height: 1.2;
+	line-height: 22px;
+	font-size: 18px!important;
+	font-family: "Arson Pro Light"!important;
 }
 .conteudo-1{
 	margin-top: 30px!important;
@@ -83,9 +122,25 @@ strong{
 	margin-top: 80px;
 }
 .conteudo-1 .coluna-3{
-	height: 500px;
+	height: 654px;
     display: flex;
     align-items: flex-end;
+}
+.materia-prima{
+	width: 360px;
+  display: inline-block;
+  float: left;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 10px 0 0 0;
+}
+.job{
+	width: 330px;
+  display: inline-block;
+  float: right;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 10px 0 0 0;
 }
 .conteudo-1 .coluna-3 a{
 	color: #fff;
@@ -101,18 +156,18 @@ strong{
 	display: block;
 }
 .conteudo-2 .owl-next{
-	margin-right: 30px!important;
+	margin-right: 60px!important;
     height: 58px!important;
     width: 38px!important;
-    background: #181818!important;
-    border-radius: 5px;
+		background: rgba(0,0,0,0.7)!important;
+border-radius: 3px;
 }
 .conteudo-2 .owl-prev{
-	margin-left: 30px!important;
+	margin-left: 60px!important;
 	height: 58px!important;
     width: 38px!important;
-    background: #181818!important;
-    border-radius: 5px;
+		background: rgba(0,0,0,0.7)!important;
+border-radius: 3px;
 }
 .conteudo-2 #id-128 .carousel-slider-nav-icon{
 	height: 58px!important;
@@ -120,33 +175,59 @@ strong{
  }
 .conteudo-3{
 	height: 600px;
-    background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/background-conteudo-3.jpg);
+    background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/bg-2-home.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 	margin-top:10px!important;
 }
-.conteudo-3 h2{
-	margin-top: 120px;
+.conteudo-3 h2 {
+    margin-top: 130px;
+    font-size: 30px;
+    font-family: "Arson Pro Regular"!important;
 }
-.conteudo-3 p{
+.conteudo-3 p {
 	color: #fff;
-    background: #181818;
-    width: 50%;
-    padding: 40px 35px;
+	    background: #181818;
+	    width: 480px;
+	    padding: 40px;
+	    font-size: 18px;
+	    line-height: 24px;
+	    margin: 10px 0 0 0;
+}
+.conteudo-3 .wpb_content_element.raw{
+	overflow: visible !important;
+}
+.conteudo-3 .raw .ornamento{
+	width: 540px;
+  margin: -70px 0 0 0;
+}
+.conteudo-3 .raw .ornamento::after{
+	content: "";
+	background-image: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/ornamento-1.png);
+	width: 133px;
+	height: 133px;
+	display:block;
+	float: right;
+}
+.exclusividade {
+	padding: 0 0 0 160px!important;
 }
 .conteudo-4 h2{
-	margin-top: 140px;
+	margin-top: 160px;
+	font-size: 30px;
+	line-height: 30px;
 }
 .conteudo-4 img{
 	width: 80%;
     padding-left: 70px;
 }
 .conteudo-5{
-	min-height: 500px;
-    background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/background-empresa.jpg);
-    background-size: contain;
+	min-height: 600px;
+    background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/bg-paineis.jpg);
+  background-size: inherit;
 	margin-top: 40px!important;
+  background-repeat: repeat;
 }
 .conteudo-5 p{
 	text-align:right;
@@ -158,8 +239,10 @@ strong{
 	margin-top: 90px;
 }
 .conteudo-6 h2{
-	margin-top: 50px;
-    margin-bottom: 20px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 30px;
+  line-height: 30px;
 }
 /*Slider de Posts*/
 .conteudo-6 .carousel-slider .owl-nav{
@@ -177,7 +260,9 @@ strong{
     padding: 0 60px;
 }
 .conteudo-6 .carousel-slider__post-title h1{
-	font-size: 12px;
+  font-size: 16px;
+  line-height: 22px;
+  max-height: 60px;
 }
 .conteudo-6 .carousel-slider__post-excerpt{
 	display: none!important;
@@ -186,20 +271,117 @@ strong{
 	display: none!important;
 }
 .conteudo-6 #id-169 .carousel-slider__post {
-	height: 270px;
+	height: 300px;
 	border: 0px;
 }
 .conteudo-6 .carousel-slider__post-category{
 	display: none;
 }
 .conteudo-6  .carousel-slider__post-image{
-	border-radius: 10px;
-	height: 157px;
+	border-radius: 6px;
 	background-size: cover;
     background-position: center bottom;
 }
 .conteudo-6 .carousel-slider__post-publication-meta{
 	background-color: transparent;
+}
+.carousel-slider__post-title {
+    display: block;
+    margin: 10px 0 0;
+}
+.carousel-slider__post-meta{
+  font-size: 14px!important;
+}
+.formulario .container {
+      margin: 0 180px 0 0!important;
+}
+#wonderplugincarousel-1 .amazingcarousel-title {
+    position: relative!important;
+    font: 16px "Arson Pro Regular"!important;
+    line-height: 22px!important;
+    min-height: 60px!important;
+    color: #333333!important;
+    margin: 6px!important;
+    text-align: left!important;
+    text-shadow: none!important;
+}
+#wonderplugincarousel-1 .amazingcarousel-item-container{
+  text-align: left!important;
+  padding: initial!important;
+  background-color: #fff!important;
+  border: none!important;
+  -moz-box-shadow: none!important;
+  -webkit-box-shadow: none!important;
+  box-shadow: none!important;
+}
+#wonderplugincarousel-1 .amazingcarousel-image{
+  padding: 0!important;
+}
+.amazingcarousel-image div.amazingcarousel-hover-effect{
+  display: none!important;
+}
+.amazingcarousel-image div:nth-child(4n+4){
+  background-color: transparent!important;
+  opacity: 0!important;
+}
+.amazingcarousel-image div:nth-child(4n+4) a{
+  background-color: transparent!important;
+  color: transparent!important;
+  pointer-events: none!important;
+  cursor: default!important;
+  opacity: 0!important;
+}
+
+
+#wonderplugincarousel-2 .amazingcarousel-title {
+    position: relative!important;
+    font: 16px "Arson Pro Regular"!important;
+    line-height: 22px!important;
+    min-height: 60px!important;
+    color: #333333!important;
+    margin: 6px!important;
+    text-align: left!important;
+    text-shadow: none!important;
+}
+#wonderplugincarousel-2 .amazingcarousel-item-container{
+  text-align: left!important;
+  padding: initial!important;
+  background-color: #fff!important;
+  border: none!important;
+  -moz-box-shadow: none!important;
+  -webkit-box-shadow: none!important;
+  box-shadow: none!important;
+}
+#wonderplugincarousel-2 .amazingcarousel-image{
+  padding: 0!important;
+}
+
+
+.amazingcarousel-image2 div.amazingcarousel-hover-effect{
+  display: none!important;
+}
+.amazingcarousel-image2 div:nth-child(3n+3){
+  background-color: transparent!important;
+  opacity: 0!important;
+}
+.amazingcarousel-image2 div:nth-child(3n+3) a{
+  background-color: transparent!important;
+  color: transparent!important;
+  pointer-events: none!important;
+  cursor: default!important;
+  opacity: 0!important;
+}
+
+span .amazingcarousel-image div:nth-child(2n+2){
+  background-color: transparent!important;
+  opacity: 0!important;
+}
+span .amazingcarousel-image div:nth-child(2n+2) a{
+  background-color: transparent!important;
+  color: transparent!important;
+  pointer-events: none!important;
+  cursor: default!important;
+  opacity: 0!important;
 }
 
 /* Fim de Slider de Posts*/
@@ -208,7 +390,9 @@ strong{
 
 .conteudo-7 h2{
 	margin-top: 50px;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
+  font-size: 30px;
+  line-height: 30px;
 }
 .conteudo-7 .carousel-slider .owl-nav{
 	display: block!important;
@@ -229,10 +413,16 @@ strong{
 }
 .conteudo-7 .carousel-slider .carousel-slider__caption .title {
     text-align: left;
-    font-size: 12px;
+    font-size: 16px;
+    line-height: 22px;
+    max-height: 60px;
+    padding: 10px 15px;
 }
 .conteudo-7 .carousel-slider.owl-loaded {
     padding: 0 60px;
+}
+.carousel-slider .carousel-slider__item img{
+    border-radius: 6px;
 }
 .conteudo-8{
 	background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/background-contato.jpg);
@@ -242,7 +432,7 @@ strong{
 }
 .conteudo-8 h2{
 	margin-left: 42px;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     text-transform: uppercase;
 }
 .conteudo-8 h3{
@@ -261,6 +451,7 @@ strong{
 .conteudo-8 .wpcf7 input[type="text"] {
     margin-bottom: 0;
 	color: #131313;
+      padding: 15px 30px;
 }
 .conteudo-8 .wpcf7 input[type="text"]::placeholder {
 	color: #131313!important;
@@ -269,6 +460,7 @@ strong{
     margin-bottom: 0;
 	color: #131313;
 	margin-top: -15px;
+      padding: 15px 30px;
 }
 .conteudo-8 .wpcf7 input[type="email"]::placeholder {
 	color: #131313!important;
@@ -277,15 +469,69 @@ strong{
     height: 100px;
 	color: #131313;
 	margin-top: -15px;
+      padding: 15px 30px;
 }
 .conteudo-8 .wpcf7-textarea::placeholder {
 	 color: #131313!important;
 }
 .conteudo-8 .wpcf7 input[type="submit"]{
-    width: 100%;
-    background: transparent;
-    color: #353334;
-    border: 2px solid #353334;
+  width: 100%;
+  background: transparent;
+  color: #353334;
+  border: 3px solid #353334;
+  text-transform: initial;
+  font-family: "Arson Pro Bold"!important;
+  font-weight: 600!important;
+  letter-spacing: 0!important;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 15px 0;
+}
+.conteudo-8 .wpcf7 input[type="submit"]:hover{
+  color: #fff!important;
+  background-color: #333!important;
+}
+
+.time h3, .adress h3, .phone h3{
+  font-size: 16px;
+  line-height: 16px;
+padding: 7px 30px 14px 30px;
+  font-family: "Arson Pro Light"!important;
+}
+.time h3 a, .adress h3 a, .phone h3 a{
+  font-family: "Arson Pro Regular"!important;
+}
+
+.time h3::before{
+  content: "\f017";
+  font-family: "fontawesome";
+  padding: 0 15px 0 0;
+      font-size: 20px;
+}
+.adress h3::before{
+  content: "\f041";
+  font-family: "fontawesome";
+  padding: 0 15px 0 0;
+      font-size: 20px;
+}
+.phone h3::before{
+  content: "\f095";
+  font-family: "fontawesome";
+    padding: 0 15px 0 0;
+        font-size: 20px;
+}
+
+#wonderplugincarousel-1 .amazingcarousel-prev {
+    margin-top: -46px!important;
+}
+#wonderplugincarousel-1 .amazingcarousel-next {
+    margin-top: -46px!important;
+}
+#wonderplugincarousel-2 .amazingcarousel-prev {
+    margin-top: -46px!important;
+}
+#wonderplugincarousel-2 .amazingcarousel-next {
+    margin-top: -46px!important;
 }
 
 /*Página Painéis*/
@@ -536,11 +782,48 @@ strong{
     top: 30px;
     left: 30px;
 }
+footer .about{
+  padding: 0 60px 0 15px;
+}
+footer .about p{
+  margin: 0 0 20px 0;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+footer .adress{
+margin: 0 80px 20px 0;
+}
+footer .adress h4{
+  color: #fff!important;
+}
+footer .email h4 a{
+  color: #fff!important;
+}
+footer .adress h4::before{
+  content: "\f041";
+      font-family: "fontawesome";
+      padding: 0 20px 0 0;
+      font-size: 22px;
+}
+footer .email h4 a::before{
+  content: "\f2b6";
+  font-family: "fontawesome";
+  padding: 0 20px 0 0;
+  font-size: 22px;
+}
+
+.links a{
+  font-size: 18px!important;
+  line-height: 18px!important;
+  padding: 0 0 10px 0!important;
+  display: inline-block;
+}
 
 
 /*Footer*/
 .bottom-wrapper{
-	background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/background-footer-2.jpg);
+	background: url(http://localhost/projetos/attra_br/wp-content/uploads/2018/04/bg-footer.jpg);
     background-size: cover;
     background-position: center bottom;
 }
@@ -574,6 +857,15 @@ strong{
 	text-align:right;
 }
 .copyright img.icons{
-	width: 5%;
+	width: 4%;
     margin-right: 6px;
+}
+#wonderplugincarousel-3 .amazingcarousel-list-container {
+    padding: 0!important;
+}
+#wonderplugincarousel-3 .amazingcarousel-next {
+    right: 40px!important;
+}
+#wonderplugincarousel-3 .amazingcarousel-prev {
+    left: 40px!important;
 }
