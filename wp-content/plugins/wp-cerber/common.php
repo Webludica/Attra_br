@@ -134,7 +134,8 @@ function cerber_calculate_kpi($period = 1){
 
 	$stamp = time() - $period * 24 * 3600;
 	$in = implode( ',', crb_get_activity_set( 'malicious' ) );
-	$unique_ip = $wpdb->get_var('SELECT COUNT(DISTINCT ip) FROM '. CERBER_LOG_TABLE .' WHERE activity IN ('.$in.') AND stamp > '.$stamp);
+	//$unique_ip = $wpdb->get_var('SELECT COUNT(DISTINCT ip) FROM '. CERBER_LOG_TABLE .' WHERE activity IN ('.$in.') AND stamp > '.$stamp);
+	$unique_ip = cerber_db_get_var( 'SELECT COUNT(DISTINCT ip) FROM ' . CERBER_LOG_TABLE . ' WHERE activity IN (' . $in . ') AND stamp > ' . $stamp );
 
 	$kpi_list = array(
 		//array( __('Incidents detected','wp-cerber').'</a>', cerber_count_log( array( 16, 40, 50, 51, 52, 53, 54 ) ) ),
@@ -483,7 +484,7 @@ function recursive_search_key($array, $needle){
  * @since 3.0
  */
 function cerber_is_rest_url(){
-	static $cache = null;
+	static $ret = null;
 
 	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
 		return true;
@@ -493,21 +494,20 @@ function cerber_is_rest_url(){
 		return true;
 	}
 
-	if ( isset( $cache ) ) {
-		return $cache;
+	if ( isset( $ret ) ) {
+		return $ret;
 	}
 
+	$ret = false;
 	$uri = '/' . trim( $_SERVER['REQUEST_URI'], '/' ) . '/';
 
 	if ( 0 === strpos( $uri, '/' . rest_get_url_prefix() . '/' ) ) {
 		if ( 0 === strpos( get_home_url() . urldecode( $uri ), get_rest_url() ) ) {
-			$cache = true;
-			return true;
+			$ret = true;
 		}
 	}
 
-	$cache = false;
-	return false;
+	return $ret;
 }
 
 /**
@@ -600,7 +600,7 @@ function crb_get_rest_path() {
 	if (isset($_REQUEST['rest_route'])){
 		$ret = ltrim( $_REQUEST['rest_route'], '/' );
 	}
-	elseif ( get_option( 'permalink_structure' ) ) {
+	elseif ( cerber_is_permalink_enabled() ) {
 		$pos = strlen( get_rest_url() );
 		$ret = substr( get_home_url() . urldecode( $_SERVER['REQUEST_URI'] ), $pos );
 		$ret = trim( $ret, '/' );
@@ -641,12 +641,21 @@ function cerber_last_uri( $check_php = false ) {
  * @return bool|string script name or false if executable script is not detected
  */
 function cerber_get_uri_script() {
-	$last = cerber_last_uri();
-	if ( cerber_detect_exec_extension( $last ) ) {
-		return $last;
+	static $ret;
+
+	if ( isset( $ret ) ) {
+		return $ret;
 	}
 
-	return false;
+	$last = cerber_last_uri();
+	if ( cerber_detect_exec_extension( $last ) ) {
+		$ret = $last;
+	}
+	else {
+		$ret = false;
+	}
+
+	return $ret;
 }
 
 /**
@@ -700,6 +709,28 @@ function cerber_detect_exec_extension( $line, $extra = array() ) {
 	}
 
 	return false;
+}
+
+/**
+ * Return home with subfolders removed
+ *
+ * @return string
+ */
+function cerber_get_site_root(){
+	static $home_url;
+
+	if ( isset( $home_url ) ) {
+		return $home_url;
+	}
+
+	$home_url = get_home_url();
+	$p1 = strpos( $home_url, '//' );
+	$p2 = strpos( $home_url, '/', $p1 + 2 );
+	if ( $p2 !== false ) {
+		$home_url = substr( $home_url, 0, $p2 );
+	}
+
+	return $home_url;
 }
 
 /**
@@ -1182,23 +1213,86 @@ function cerber_real_escape($string){
 }
 
 /**
- * Performs generic direct SQL query to the site DB
+ * Execute generic direct SQL query on the site DB
  *
  * The reason: https://make.wordpress.org/core/2017/10/31/changed-behaviour-of-esc_sql-in-wordpress-4-8-3/
  *
  * @param $query string An SQL query
  *
- * @return bool|mysqli_result
+ * @return bool|mysqli_result|resource
  * @since 6.0
  */
 function cerber_db_query( $query ) {
-	global $wpdb;
+	global $cerber_db_errors;
+
+	$db = cerber_get_db();
+
+	if ( ! $db ) {
+		return false;
+	}
+
+	if ( $db->use_mysqli ) {
+		$ret = mysqli_query( $db->dbh, $query );
+		if ( ! $ret ) {
+			if ( ! isset( $cerber_db_errors ) ) {
+				$cerber_db_errors = array();
+			}
+			$cerber_db_errors[] = mysqli_error( $db->dbh );
+		}
+	}
+	else {
+		$ret = mysql_query( $query, $db->dbh ); // For compatibility reason only
+	}
+
+	return $ret;
+}
+
+function cerber_db_get_results( $query, $type = MYSQLI_NUM ) {
+	$db = cerber_get_db();
+
+	if ( $result = cerber_db_query( $query ) ) {
+		if ( $db->use_mysqli ) {
+			return $result->fetch_all( $type );
+		}
+		else {
+			if ( $type == MYSQLI_NUM ) {
+				return mysql_fetch_array( $result, MYSQL_NUM );  // For compatibility reason only
+			}
+			else {
+				return mysql_fetch_assoc( $result );  // For compatibility reason only
+			}
+		}
+	}
+
+	return false;
+}
+
+function cerber_db_get_var( $query ) {
+	$db = cerber_get_db();
+
+	if ( $result = cerber_db_query( $query ) ) {
+		if ( $db->use_mysqli ) {
+			//$r = $result->fetch_row();
+			$r = mysqli_fetch_row( $result );
+		}
+		else {
+			$r = mysql_fetch_row( $result );  // For compatibility reason only
+		}
+
+		return $r[0];
+	}
+
+	return false;
+}
+
+function cerber_get_db() {
+	global $wpdb, $cerber_db_errors;
 	static $db;
 
 	if ( ! isset( $db ) || ! is_object( $db ) ) {
 		// Check for connected DB handler
 		if ( ! is_object( $wpdb ) || empty( $wpdb->dbh ) ) {
-			if ( ! $db = cerber_direct_db_connect() ) {
+			if ( ! $db = cerber_db_connect() ) {
 				return false;
 			}
 		}
@@ -1207,14 +1301,7 @@ function cerber_db_query( $query ) {
 		}
 	}
 
-	if ( $db->use_mysqli ) {
-		$ret = mysqli_query( $db->dbh, $query );
-	}
-	else {
-		$ret = mysql_query( $query, $db->dbh ); // For compatibility reason
-	}
-
-	return $ret;
+	return $db;
 }
 
 /**
@@ -1222,7 +1309,7 @@ function cerber_db_query( $query ) {
  *
  * @return bool|wpdb
  */
-function cerber_direct_db_connect() {
+function cerber_db_connect() {
 	if ( ! defined( 'CRB_ABSPATH' ) ) {
 		define( 'CRB_ABSPATH', dirname( __FILE__, 4 ) );
 	}
@@ -1232,7 +1319,7 @@ function cerber_direct_db_connect() {
 		$config = str_replace( '<?php', '', $config );
 		$config = str_replace( '?>', '', $config );
 		ob_start();
-		@eval( $config ); // This eval is OK. Getting site DB parameters.
+		@eval( $config ); // This eval is OK. Getting site DB connection parameters.
 		ob_end_clean();
 		if ( defined( 'DB_USER' ) && defined( 'DB_PASSWORD' ) && defined( 'DB_NAME' ) && defined( 'DB_HOST' ) ) {
 			require_once( $db_class );
@@ -1262,10 +1349,10 @@ function cerber_remove_comments( $string = '' ) {
  */
 function cerber_set_groove( $expire ) {
 	if ( ! headers_sent() ) {
-		setcookie( 'cerber_groove', md5( cerber_get_groove() ), $expire + 1, COOKIEPATH );
+		setcookie( 'cerber_groove', md5( cerber_get_groove() ), $expire + 1, cerber_get_cookie_path() );
 
 		$groove_x = cerber_get_groove_x();
-		setcookie( 'cerber_groove_x_'.$groove_x[0], $groove_x[1], $expire + 1, COOKIEPATH );
+		setcookie( 'cerber_groove_x_'.$groove_x[0], $groove_x[1], $expire + 1, cerber_get_cookie_path() );
 	}
 }
 
@@ -1325,6 +1412,14 @@ function cerber_get_groove_x( $regenerate = false ) {
 	return $groove_x;
 }
 
+function cerber_get_cookie_path(){
+	if ( defined( 'COOKIEPATH' ) ) {
+		return COOKIEPATH;
+	}
+
+	return '/';
+}
+
 /**
  * Synchronize plugin settings with rules in the .htaccess file
  *
@@ -1340,7 +1435,7 @@ function cerber_htaccess_sync( $settings = array() ) {
 
 	$rules = array();
 
-	if ( $settings['adminphp'] ) {
+	if ( !empty($settings['adminphp']) ) {
 		// https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-6389
 		$groove_x = cerber_get_groove_x();
 		$cookie = 'cerber_groove_x_'.$groove_x[0];
@@ -1417,6 +1512,51 @@ function cerber_get_htaccess_file() {
 }
 
 /**
+ * Check if the remote domain match mask
+ *
+ * @param $domain_mask array|string Mask(s) to check remote domain against
+ *
+ * @return bool True if hostname match at least one domain from the list
+ */
+function cerber_check_remote_domain( $domain_mask ) {
+
+	$hostname = @gethostbyaddr( cerber_get_remote_ip() );
+
+	if ( ! $hostname || filter_var( $hostname, FILTER_VALIDATE_IP ) ) {
+		return false;
+	}
+
+	if ( ! is_array( $domain_mask ) ) {
+		$domain_mask = array( $domain_mask );
+	}
+
+	foreach ( $domain_mask as $mask ) {
+
+		if ( substr_count( $mask, '.' ) != substr_count( $hostname, '.' ) ) {
+			continue;
+		}
+
+		$parts = array_reverse( explode( '.', $hostname ) );
+
+		$ok = true;
+
+		foreach ( array_reverse( explode( '.', $mask ) ) as $i => $item ) {
+			if ( $item != '*' && $item != $parts[ $i ] ) {
+				$ok = false;
+				break;
+			}
+		}
+
+		if ( $ok == true ) {
+			return true;
+		}
+
+	}
+
+	return false;
+}
+
+/**
  * Prepare files (install/deinstall) for different boot modes
  *
  * @param $mode int A plugin boot mode
@@ -1479,4 +1619,19 @@ function cerber_get_mode() {
 	}
 
 	return 0;
+}
+
+function cerber_is_permalink_enabled() {
+	static $ret;
+	if ( isset( $ret ) ) {
+		return $ret;
+	}
+	if ( get_option( 'permalink_structure' ) ) {
+		$ret = true;
+	}
+	else {
+		$ret = false;
+	}
+
+	return $ret;
 }

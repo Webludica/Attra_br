@@ -86,7 +86,14 @@ function cerber_settings_init(){
 	add_settings_field('page404',__('Display 404 page','wp-cerber'),'cerberus_field_show','cerber-'.$tab,'proactive',array('group'=>$tab, 'option'=>'page404', 'type'=>'select', 'set' => array(__('Use 404 template from the active theme','wp-cerber'), __('Display simple 404 page','wp-cerber'))));
 
 	add_settings_section('custom', __('Custom login page','wp-cerber'), 'cerber_sapi_section', 'cerber-' . $tab);
-	add_settings_field('loginpath',__('Custom login URL','wp-cerber'),'cerberus_field_show','cerber-'.$tab,'custom',array('group'=>$tab,'option'=>'loginpath','type'=>'text','label'=>__('must not overlap with the existing pages or posts slug','wp-cerber')));
+	add_settings_field( 'loginpath', __( 'Custom login URL', 'wp-cerber' ), 'cerber_field_show', 'cerber-' . $tab, 'custom', array(
+		'group'   => $tab,
+		'setting' => 'loginpath',
+		'type'    => 'text',
+		'pattern' => '[a-zA-Z0-9\-_]{1,100}',
+		'title'   => __( 'Custom login URL may contain only letters, numbers, dashes and underscores', 'wp-cerber' ),
+		'label'   => __( 'must not overlap with the existing pages or posts slug', 'wp-cerber' )
+	) );
 	add_settings_field('loginnowp',__('Disable wp-login.php','wp-cerber'),'cerberus_field_show','cerber-'.$tab,'custom',array('group'=>$tab,'option'=>'loginnowp','type'=>'checkbox','label'=>__('Block direct access to wp-login.php and return HTTP 404 Not Found Error','wp-cerber')));
 
 	add_settings_section('citadel', __('Citadel mode','wp-cerber'), 'cerber_sapi_section', 'cerber-' . $tab);
@@ -122,7 +129,7 @@ function cerber_settings_init(){
 		       'type'   => 'textarea',
 		       'delimiter'   => "\n",
 		       'list'        => true,
-		       'label'  => __( 'Specify REST API namespaces to be allowed if REST API is disabled. One string per line.', 'wp-cerber' )
+		       'label'  => __( 'Specify REST API namespaces to be allowed if REST API is disabled. One string per line.', 'wp-cerber' ) . ' <a target="_blank" href="https://wpcerber.com/restrict-access-to-wordpress-rest-api/">Read more</a>',
 		) );
 	//add_settings_field('hashauthor',__('Hide author usernames','wp-cerber'),'cerberus_field_show',CERBER_OPT_H,'hwp',array('group'=>$tab,'option'=>'hashauthor','type'=>'checkbox','label'=>__('Replace author username with hash for author pages and URLs','wp-cerber')));
 	//add_settings_field('cleanhead',__('Clean up HEAD','wp-cerber'),'cerberus_field_show','cerber-'.$tab,'hwp',array('group'=>$tab,'option'=>'cleanhead','type'=>'checkbox','label'=>__('Remove generator and version tags from HEAD section','wp-cerber')));
@@ -164,7 +171,7 @@ function cerber_settings_init(){
 		       'type'   => 'textarea',
 		       'delimiter'   => "\n",
 		       'list'        => true,
-		       'label'  => __( 'Enter a part of query string or query path to exclude a request from inspection by the engine. One item per line.', 'wp-cerber' )
+		       'label' => __( 'Enter a part of query string or query path to exclude a request from inspection by the engine. One item per line.', 'wp-cerber' ) . ' ' . __( 'To specify a REGEX pattern, enclose a whole line in two braces.', 'wp-cerber' ) . ' <a href="https://wpcerber.com/antispam-for-wordpress-contact-forms/" target="_blank">Read more</a>',
 		) );
 
 	add_settings_section('commproc', __('Comment processing','wp-cerber'), 'cerber_sapi_section', CERBER_OPT_C);
@@ -263,7 +270,7 @@ function cerber_settings_init(){
 		       'type'   => 'textarea',
 		       'delimiter'   => "\n",
 		       'list'        => true,
-		       'label'  => __( 'Enter a request URI to exclude the request from inspection. One item per line.', 'wp-cerber' ).' <a target="_blank" href="https://wpcerber.com/traffic-inspector-in-a-nutshell/">Know more</a>',
+		       'label' => __( 'Enter a request URI to exclude the request from inspection. One item per line.', 'wp-cerber' ) . ' ' . __( 'To specify a REGEX pattern, enclose a whole line in two braces.', 'wp-cerber' ) . ' <a target="_blank" href="https://wpcerber.com/traffic-inspector-in-a-nutshell/">Know more</a>',
 		) );
 
 	add_settings_section( 'tlog', __( 'Logging', 'wp-cerber' ), 'cerber_sapi_section', CERBER_OPT_T );
@@ -344,11 +351,11 @@ function cerber_sapi_section($args){
 	        _e('Make your protection smarter!','wp-cerber');
             break;
 	    case 'custom':
-		    if (!get_option('permalink_structure')) {
-			    echo '<span style="color:#DF0000;">'.__('Please enable Permalinks to use this feature. Set Permalink Settings to something other than Default.','wp-cerber').'</span>';
+		    if ( ! cerber_is_permalink_enabled() ) {
+			    echo '<span style="color:#DF0000;">' . __( 'Please enable Permalinks to use this feature. Set Permalink Settings to something other than Default.', 'wp-cerber' ) . '</span>';
 		    }
 		    else {
-			    _e('Be careful when enabling this options. If you forget the custom login URL you will not be able to login.','wp-cerber');
+			    _e( 'Be careful when enabling this options. If you forget the custom login URL you will not be able to login.', 'wp-cerber' );
 		    }
 		    break;
 	    case 'citadel':
@@ -485,7 +492,7 @@ function cerberus_field_show($args){
 		if ( isset( $settings[ $args['option'] ] ) ) {
 			$value = $settings[ $args['option'] ];
 		}
-		if ( ( $args['option'] == 'loginnowp' || $args['option'] == 'loginpath' ) && ! get_option( 'permalink_structure' ) ) {
+		if ( ( $args['option'] == 'loginnowp' || $args['option'] == 'loginpath' ) && ! cerber_is_permalink_enabled() ) {
 			$disabled = ' disabled="disabled" ';
 		}
 		if ( $args['option'] == 'loginpath' ) {
@@ -603,7 +610,7 @@ function cerber_field_show($args){
 			$value = $settings[ $args['setting'] ];
 		}
 
-		if ( ( $args['setting'] == 'loginnowp' || $args['setting'] == 'loginpath' ) && ! get_option( 'permalink_structure' ) ) {
+		if ( ( $args['setting'] == 'loginnowp' || $args['setting'] == 'loginpath' ) && ! cerber_is_permalink_enabled() ) {
 			$disabled = ' disabled="disabled" ';
 		}
 		if ( $args['setting'] == 'loginpath' ) {
@@ -676,7 +683,7 @@ function cerber_field_show($args){
 		default:
 		    $size = '';
 		    $maxlength = '';
-		    $plh = '';
+		    $attrs = '';
             if ( isset( $args['size'] ) ) {
                 //$size = ' size="' . $args['size'] . '" maxlength="' . $args['size'] . '" ';
 	            $size = ' size="' . $args['size'] . '"';
@@ -688,9 +695,15 @@ function cerber_field_show($args){
 			    $maxlength = ' maxlength="' . $args['size'] . '" ';
             }
             if ( isset( $args['placeholder'] ) ) {
-                $plh = ' placeholder="' . $args['placeholder'] . '"';
+                $attrs .= ' placeholder="' . $args['placeholder'] . '"';
             }
-            $html = $pre . '<input type="text" id="' . $args['setting'] . '" name="' . $name . '" value="' . $value . '"' . $disabled . $size . $maxlength . $plh . '/>';
+		    if ( isset( $args['pattern'] ) ) {
+			    $attrs .= ' pattern="' . $args['pattern'] . '"';
+		    }
+		    if ( isset( $args['title'] ) ) {
+			    $attrs .= ' title="' . $args['title'] . '"';
+		    }
+            $html = $pre . '<input type="text" id="' . $args['setting'] . '" name="' . $name . '" value="' . $value . '"' . $disabled . $size . $maxlength . $attrs . '/>';
             $html .= ' <label for="' . $args['setting'] . '">' . $label . '</label>';
 		break;
 	}
@@ -790,7 +803,7 @@ function cerber_sanitize_m($new, $old, $option) {
 	$new['aglocks']  = absint( $new['aglocks'] );
 	$new['aglast']   = absint( $new['aglast'] );
 
-	if ( get_option( 'permalink_structure' ) ) {
+	if ( cerber_is_permalink_enabled() ) {
 		$new['loginpath'] = urlencode( str_replace( '/', '', $new['loginpath'] ) );
 		$new['loginpath'] = sanitize_text_field($new['loginpath']);
 		if ( $new['loginpath'] && $new['loginpath'] != $old['loginpath'] ) {
@@ -1226,18 +1239,18 @@ function cerber_get_defaults($field = null) {
  */
 function cerber_upgrade_options() {
 	// @since 4.4, migrating fields to a new option
-	$main = get_site_option( CERBER_OPT );
-	if (!empty($main['email']) || !empty($main['emailrate'])){
-		$new = get_site_option( CERBER_OPT_N, array() );
-		$new['email'] = $main['email'];
-		$new['emailrate'] = $main['emailrate'];
-		update_site_option( CERBER_OPT_N, $new );
-		// clean up old values
-		$main['email'] = '';
-		$main['emailrate'] = '';
-		update_site_option( CERBER_OPT, $main );
+	if ($main = get_site_option( CERBER_OPT )) {
+		if ( ! empty( $main['email'] ) || ! empty( $main['emailrate'] ) ) {
+			$new              = get_site_option( CERBER_OPT_N, array() );
+			$new['email']     = $main['email'];
+			$new['emailrate'] = $main['emailrate'];
+			update_site_option( CERBER_OPT_N, $new );
+			// clean up old values
+			$main['email']     = '';
+			$main['emailrate'] = '';
+			update_site_option( CERBER_OPT, $main );
+		}
 	}
-
 	// @since 5.7
     // Upgrade options: add new settings (fields) with their default values
 	foreach ( cerber_get_defaults() as $option_name => $fields ) {
@@ -1285,22 +1298,26 @@ function cerber_save_options($options){
  *
  * @return array|bool|mixed
  */
-function cerber_get_options($option = '') {
+function cerber_get_options( $option = '' ) {
 	$options = cerber_get_setting_list();
 	$united  = array();
 	foreach ( $options as $opt ) {
 		$o = get_site_option( $opt );
-		if (!is_array($o)) continue;
+		if ( ! is_array( $o ) ) {
+			continue;
+		}
 		$united = array_merge( $united, $o );
 	}
 	$options = $united;
 	if ( ! empty( $option ) ) {
 		if ( isset( $options[ $option ] ) ) {
 			return $options[ $option ];
-		} else {
+		}
+		else {
 			return false;
 		}
 	}
+
 	return $options;
 }
 

@@ -35,7 +35,7 @@
 if ( ! defined( 'WPINC' ) ) { exit; }
 
 define( 'LAB_NODE_MAX', 7 ); // Maximum node ID
-define( 'LAB_DELAY_MAX', 1500 ); // milliseconds, reasonable maximum of processing time while connecting to a node
+define( 'LAB_DELAY_MAX', 2000 ); // milliseconds, reasonable maximum of processing time while connecting to a node
 define( 'LAB_RECHECK', 15 * 60 ); // seconds, allowed interval for rechecking nodes
 define( 'LAB_INTERVAL', 180 ); // seconds, push interval
 define( 'LAB_DNS_TTL', 3 * 24 * 3600 ); // seconds, interval of updating DNS cache for nodes IPs
@@ -371,11 +371,12 @@ function lab_get_node($node_id = null){
 /**
  * Check all nodes and find the closest and active one.
  * 
- * @param bool $force if true perform check without checking allowed interval LAB_RECHECK
+ * @param bool $force If true performs checking nodes without checking allowed interval LAB_RECHECK
+ * @param bool $kick_dns If true preload DNS cache to eliminate DNS resolving delay
  *
  * @return bool|int
  */
-function lab_check_nodes($force = false) {
+function lab_check_nodes($force = false, $kick_dns = false) {
 
 	$nodes = lab_get_nodes();
 	if (!$force && isset($nodes['last_check']) && (time() - $nodes['last_check']) < LAB_RECHECK )  return false;
@@ -384,6 +385,9 @@ function lab_check_nodes($force = false) {
 	update_site_option( '_cerberlab_', $nodes );
 
 	for ( $i = 1; $i <= LAB_NODE_MAX; $i ++ ) {
+		if ( $kick_dns ) {
+			@gethostbyname( 'node' . $i . '.cerberlab.net' );
+		}
 		lab_send_request( array( 'test' => 'test', 'key' => 1 ), $i );
 	}
 
@@ -434,7 +438,8 @@ function lab_update_node_last($node_id, $last = array()) {
 }
 
 function lab_get_nodes() {
-	return cerber_get_site_option( '_cerberlab_' );
+	//return cerber_get_site_option( '_cerberlab_' );
+	return get_site_option( '_cerberlab_' );
 }
 
 /**
@@ -446,7 +451,7 @@ function lab_status(){
 
 	$ret = '';
 
-	if ( ! crb_get_settings( 'cerberlab' ) ) {
+	if ( ! crb_get_settings( 'cerberlab' ) && ! lab_lab() ) {
 		$ret .= '<p style = "color:red;"><b>Cerber Lab connection is disabled</b></p>';
 	}
 

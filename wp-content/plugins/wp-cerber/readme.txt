@@ -5,7 +5,7 @@ Tags: security, login, custom login url, antispam, limit login attempts, firewal
 Requires at least: 4.4
 Requires PHP: 5.3
 Tested up to: 4.9
-Stable tag: 6.5
+Stable tag: 6.7
 License: GPLv2
 
 Protection against hacker attacks and bots. Restrict access with IP access lists, track user and bot activity. reCAPTCHA. Limit login attempts.
@@ -286,6 +286,14 @@ To get access to your dashboard you need to copy the WP Cerber Reset folder to t
 
 
 == Changelog ==
+
+= 6.7 =
+* New: Regular expressions are now available for the Traffic Inspector Request whitelist and Antispam Query whitelist.
+* Update: Antispam engine algorithms have been updated to improve AJAX requests handling and reduce false positives.
+* Update: Improved compatibility with WooCommerce, Formidable Forms, Gravity Forms and AJAX file upload.
+* Update: Any symbols other than letters, numbers, dashes and underscores are not permitted in Custom login URL anymore.
+* Bug fixed: The Safe antispam mode doesn’t work correctly on some website configurations. That may lead to false positives and erroneous spam form submission detection.
+* [Read more](https://wpcerber.com/wp-cerber-security-6-7/)
 
 = 6.5 =
 * New: A new, advanced initialization mode which reinforces overall security performance.

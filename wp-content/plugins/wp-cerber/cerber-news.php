@@ -136,6 +136,14 @@ function cerber_push_the_news( $version ) {
 	$news['6.5'][] = 'In the Smart mode if a user is not logged in, all requests to the admin dashboard are logged.';
 	$news['6.5'][] = 'Performance of the logging subsystem is improved: the DB query has been updated.';
 
+	$news['6.7'][] = 'Antispam engine algorithms have been updated to improve AJAX requests handling and reduce false positives.';
+	$news['6.7'][] = 'Improved compatibility with WooCommerce, Formidable Forms, Gravity Forms and AJAX file upload.';
+	$news['6.7'][] = 'Regular expressions are now available for the Traffic Inspector Request whitelist and Antispam Query whitelist.';
+	$news['6.7'][] = 'Any symbols other than letters, numbers, dashes and underscores are not permitted for Custom login URL anymore. Previously configured URLs will work fine.';
+	$news['6.7'][] = 'Bug fixed: the Safe antispam mode doesn\'t work correctly on some website configurations. That may leads to false positives and erroneous spam form submission detection.';
+	$news['6.7'][] = 'Norwegian Bokmål and Dutch language translations have updated. Thanks to Jos Knippen and Eirik Vorland.';
+
+
 	if ( ! empty( $news[ $version ] ) ) {
 		//$text = '<h3>What\'s new in WP Cerber '.$version.'</h3>';
 

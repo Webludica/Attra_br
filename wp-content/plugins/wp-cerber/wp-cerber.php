@@ -5,7 +5,7 @@
 	Description: Protects WordPress against brute force attacks, bots and hackers. Antispam protection with the Cerber antispam engine and reCAPTCHA. Comprehensive control of user and bot activity. Restrict login by IP access lists. Limit login attempts. Know more: <a href="https://wpcerber.com">wpcerber.com</a>.
 	Author: Gregory
 	Author URI: https://wpcerber.com
-	Version: 6.5
+	Version: 6.7
 	Text Domain: wp-cerber
 	Domain Path: /languages
 	Network: true
@@ -31,7 +31,7 @@
 
 */
 
-define( 'CERBER_VER', '6.5' );
+define( 'CERBER_VER', '6.7' );
 
 function cerber_plugin_file() {
 	return __FILE__;
@@ -44,6 +44,9 @@ function cerber_plugin_data() {
 }
 function cerber_plugin_dir_url() {
 	return plugin_dir_url( __FILE__ );
+}
+function cerber_get_plugins_dir() {
+	return dirname( __FILE__ , 2 );
 }
 
 require_once( dirname( __FILE__ ) . '/cerber-load.php' );

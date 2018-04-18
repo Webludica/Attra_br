@@ -644,6 +644,12 @@ a.nav-tab:first-child{
     text-align: center;
 }
 
+/* Scanner page */
+
+#crb-scanner {
+    text-align: center;
+}
+
 /* Widgets */
 
 #cerber_quick .inside {

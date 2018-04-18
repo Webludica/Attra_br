@@ -1,6 +1,5 @@
 <?php
 /*
-	Plugin Name: WP Cerber boot module
 	Plugin URI: https://wpcerber.com
 	Description: This is a standard boot module for WP Cerber Security & Antispam plugin. It was installed when you set the plugin initialization mode to Standard. Know more: <a href="https://wpcerber.com">wpcerber.com</a>.
 	Author: Gregory

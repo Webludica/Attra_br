@@ -30,18 +30,54 @@
 */
 
 
-
-
-
-
-
-
-
-
-
 if ( ! defined( 'WPINC' ) ) { exit; }
 
 require_once( dirname( __FILE__ ) . '/cerber-tools.php' );
+
+/*
+	Add admin menu, init admin stuff
+*/
+if ( ! is_multisite() ) {
+	add_action( 'admin_menu', 'cerber_admin_menu' );
+}
+else {
+	add_action( 'network_admin_menu', 'cerber_admin_menu' );  // only network wide menu allowed in multisite mode
+}
+function cerber_admin_menu() {
+
+	if ( cerber_is_admin_page( false ) ) {
+		cerber_check_environment();
+	}
+
+	$hook = add_menu_page( __( 'WP Cerber Security', 'wp-cerber' ), __( 'WP Cerber', 'wp-cerber' ), 'manage_options', 'cerber-security', 'cerber_settings_page', 'dashicons-shield', '100' );
+	add_action( 'load-' . $hook, 'cerber_screen_options' );
+	add_submenu_page( 'cerber-security', __( 'Cerber Dashboard', 'wp-cerber' ), __( 'Dashboard' ), 'manage_options', 'cerber-security', 'cerber_settings_page' );
+
+	$hook = add_submenu_page( 'cerber-security', __( 'Cerber Traffic Inspector', 'wp-cerber' ), __( 'Traffic Inspector', 'wp-cerber' ), 'manage_options', 'cerber-traffic', 'cerber_traffic_page' );
+	add_action( 'load-' . $hook, 'cerber_screen_options' );
+
+	if ( lab_lab() ) {
+		add_submenu_page( 'cerber-security', __( 'Cerber Security Rules', 'wp-cerber' ), __( 'Security Rules', 'wp-cerber' ), 'manage_options', 'cerber-rules', 'cerber_rules_page' );
+	}
+
+	add_submenu_page( 'cerber-security', __( 'Cerber antispam settings', 'wp-cerber' ), __( 'Antispam', 'wp-cerber' ), 'manage_options', 'cerber-recaptcha', 'cerber_recaptcha_page' );
+	add_submenu_page( 'cerber-security', __( 'Cerber tools', 'wp-cerber' ), __( 'Tools', 'wp-cerber' ), 'manage_options', 'cerber-tools', 'cerber_tools_page' );
+
+}
+
+add_action( 'admin_bar_menu', 'cerber_admin_bar' );
+function cerber_admin_bar( $wp_admin_bar ) {
+	if ( ! is_multisite() ) {
+		return;
+	}
+	$args = array(
+		'parent' => 'network-admin',
+		'id'     => 'cerber_admin',
+		'title'  => __( 'WP Cerber', 'wp-cerber' ),
+		'href'   => cerber_admin_link(),
+	);
+	$wp_admin_bar->add_node( $args );
+}
 
 /*
 	Display lockouts in dashboard for admins
@@ -183,7 +219,7 @@ add_action('admin_init','cerber_acl_form_process');
 function cerber_acl_form_process(){
 
 	if ( ! cerber_is_http_post() || ! isset( $_POST['cerber_nonce'] ) ) {
-		return;
+		    return;
 	}
 	if ( ! current_user_can( 'manage_options' ) || ! wp_verify_nonce( $_POST['cerber_nonce'], 'cerber_dashboard' ) ) {
 		return;
@@ -979,49 +1015,6 @@ function cerber_user_extra_view($user_id, $context = 'activity'){
 }
 
 /*
-	Add admin menu, init admin stuff
-*/
-if ( ! is_multisite() ) {
-	add_action( 'admin_menu', 'cerber_admin_menu' );
-}
-else {
-	add_action( 'network_admin_menu', 'cerber_admin_menu' );  // only network wide menu allowed in multisite mode
-}
-function cerber_admin_menu() {
-
-	if ( cerber_is_admin_page(false) ) {
-		cerber_check_environment();
-	}
-
-	$hook = add_menu_page( __( 'WP Cerber Security', 'wp-cerber' ), __( 'WP Cerber', 'wp-cerber' ), 'manage_options', 'cerber-security', 'cerber_settings_page', 'dashicons-shield', '100' );
-	add_action( 'load-' . $hook, 'cerber_screen_options' );
-	add_submenu_page( 'cerber-security', __( 'Cerber Dashboard', 'wp-cerber' ), __( 'Dashboard' ), 'manage_options', 'cerber-security', 'cerber_settings_page' );
-
-	$hook = add_submenu_page( 'cerber-security', __( 'Cerber Traffic Inspector', 'wp-cerber' ), __( 'Traffic Inspector', 'wp-cerber' ), 'manage_options', 'cerber-traffic', 'cerber_traffic_page' );
-	add_action( 'load-' . $hook, 'cerber_screen_options' );
-
-	if (lab_lab()) {
-	    add_submenu_page( 'cerber-security', __( 'Cerber Security Rules', 'wp-cerber' ), __( 'Security Rules', 'wp-cerber' ), 'manage_options', 'cerber-rules', 'cerber_rules_page' );
-	}
-
-	add_submenu_page( 'cerber-security', __( 'Cerber antispam settings', 'wp-cerber' ), __( 'Antispam', 'wp-cerber' ), 'manage_options', 'cerber-recaptcha', 'cerber_recaptcha_page' );
-	add_submenu_page( 'cerber-security', __( 'Cerber tools', 'wp-cerber' ), __( 'Tools', 'wp-cerber' ), 'manage_options', 'cerber-tools', 'cerber_tools_page' );
-
-}
-
-add_action( 'admin_bar_menu', 'cerber_admin_bar' );
-function cerber_admin_bar( $wp_admin_bar ) {
-	if (!is_multisite()) return;
-	$args = array(
-		'parent' => 'network-admin',
-		'id'    => 'cerber_admin',
-		'title' => __('WP Cerber','wp-cerber'),
-		'href'  => cerber_admin_link(),
-	);
-	$wp_admin_bar->add_node( $args );
-}
-
-/*
 	Check if currently displayed page is a Cerber admin dashboard page with optional checking a set of GET params
 */
 function cerber_is_admin_page( $force = true, $params = array() ) {
@@ -1123,7 +1116,8 @@ add_filter( 'manage_users_custom_column' , function ($value, $column, $user_id) 
 		break;
 		case 'cbfl' :
 			$u      = get_userdata( $user_id );
-			$failed = $wpdb->get_var( 'SELECT COUNT(user_id) FROM ' . CERBER_LOG_TABLE . ' WHERE user_login = \'' . $u->user_login . '\' AND activity = 7 AND stamp > ' . ( time() - 24 * 3600 ) );
+			//$failed = $wpdb->get_var( 'SELECT COUNT(user_id) FROM ' . CERBER_LOG_TABLE . ' WHERE user_login = \'' . $u->user_login . '\' AND activity = 7 AND stamp > ' . ( time() - 24 * 3600 ) );
+			$failed = cerber_db_get_var( 'SELECT COUNT(user_id) FROM ' . CERBER_LOG_TABLE . ' WHERE user_login = "' . $u->user_login . '" AND activity = 7 AND stamp > ' . ( time() - 24 * 3600 ) );
 			if ( $failed ) {
 				$act_link = cerber_admin_link( 'activity' );
 				$ret      = '<a href="' . $act_link . '&filter_login=' . $u->user_login . '&filter_activity=7">' . $failed . '</a>';
@@ -1133,7 +1127,8 @@ add_filter( 'manage_users_custom_column' , function ($value, $column, $user_id) 
 			}
 		break;
 		case 'cbdr' :
-			$time = strtotime($wpdb->get_var("SELECT user_registered FROM  $wpdb->users WHERE id = ".$user_id));
+			//$time = strtotime($wpdb->get_var("SELECT user_registered FROM  $wpdb->users WHERE id = ".$user_id));
+			$time = strtotime( cerber_db_get_var( "SELECT user_registered FROM  $wpdb->users WHERE id = " . $user_id ) );
 			if ($time < (time() - DAY_IN_SECONDS)){
 				$ret = cerber_date($time);
             }
@@ -1150,7 +1145,8 @@ add_filter( 'manage_users_custom_column' , function ($value, $column, $user_id) 
 				}
 				$uid = absint( $rm['user'] );
 				if ( $uid ) {
-					$name = $wpdb->get_var( 'SELECT meta_value FROM ' . $wpdb->usermeta . ' WHERE user_id  = ' . $uid . ' AND meta_key = "nickname"' );
+					//$name = $wpdb->get_var( 'SELECT meta_value FROM ' . $wpdb->usermeta . ' WHERE user_id  = ' . $uid . ' AND meta_key = "nickname"' );
+					$name = cerber_db_get_var( 'SELECT meta_value FROM ' . $wpdb->usermeta . ' WHERE user_id  = ' . $uid . ' AND meta_key = "nickname"' );
 					if (!$user_ID) {
 					    $user_ID = get_current_user_id();
 				    }
@@ -1187,25 +1183,25 @@ function cerber_quick_w(){
 	$acl = cerber_admin_link('traffic');
 	$loc = cerber_admin_link('antispam');
 
-	$failed = $wpdb->get_var('SELECT count(ip) FROM '. CERBER_LOG_TABLE .' WHERE activity IN (7) AND stamp > '.(time() - 24 * 3600));
-	$failed_prev = $wpdb->get_var('SELECT count(ip) FROM '. CERBER_LOG_TABLE .' WHERE activity IN (7) AND stamp > '.(time() - 48 * 3600).' AND stamp < '.(time() - 24 * 3600));
+	$failed = cerber_db_get_var('SELECT count(ip) FROM '. CERBER_LOG_TABLE .' WHERE activity IN (7) AND stamp > '.(time() - 24 * 3600));
+	$failed_prev = cerber_db_get_var('SELECT count(ip) FROM '. CERBER_LOG_TABLE .' WHERE activity IN (7) AND stamp > '.(time() - 48 * 3600).' AND stamp < '.(time() - 24 * 3600));
 
 	$failed_ch = cerber_percent($failed_prev,$failed);
 
-	$locked = $wpdb->get_var('SELECT count(ip) FROM '. CERBER_LOG_TABLE .' WHERE activity IN (10,11) AND stamp > '.(time() - 24 * 3600));
-	$locked_prev = $wpdb->get_var('SELECT count(ip) FROM '. CERBER_LOG_TABLE .' WHERE activity IN (10,11) AND stamp > '.(time() - 48 * 3600).' AND stamp < '.(time() - 24 * 3600));
+	$locked = cerber_db_get_var('SELECT count(ip) FROM '. CERBER_LOG_TABLE .' WHERE activity IN (10,11) AND stamp > '.(time() - 24 * 3600));
+	$locked_prev = cerber_db_get_var('SELECT count(ip) FROM '. CERBER_LOG_TABLE .' WHERE activity IN (10,11) AND stamp > '.(time() - 48 * 3600).' AND stamp < '.(time() - 24 * 3600));
 
 	$locked_ch = cerber_percent($locked_prev,$locked);
 
 	//$lockouts = $wpdb->get_var('SELECT count(ip) FROM '. CERBER_BLOCKS_TABLE);
 
     $lockouts = cerber_blocked_num(); 
-	if ($last = $wpdb->get_var('SELECT MAX(stamp) FROM '.CERBER_LOG_TABLE.' WHERE  activity IN (10,11)')) {
+	if ($last = cerber_db_get_var('SELECT MAX(stamp) FROM '.CERBER_LOG_TABLE.' WHERE  activity IN (10,11)')) {
 		$last = cerber_ago_time( $last );
 	}
 	else $last = __('Never','wp-cerber');
-	$w_count = $wpdb->get_var('SELECT count(ip) FROM '. CERBER_ACL_TABLE .' WHERE tag ="W"' );
-	$b_count = $wpdb->get_var('SELECT count(ip) FROM '. CERBER_ACL_TABLE .' WHERE tag ="B"' );
+	$w_count = cerber_db_get_var('SELECT count(ip) FROM '. CERBER_ACL_TABLE .' WHERE tag ="W"' );
+	$b_count = cerber_db_get_var('SELECT count(ip) FROM '. CERBER_ACL_TABLE .' WHERE tag ="B"' );
 
 	if (cerber_is_citadel()) $citadel = '<span style="color:#FF0000;">'.__('active','wp-cerber').'</span> (<a href="'.wp_nonce_url(add_query_arg(array('citadel' => 'deactivate')),'control','cerber_nonce').'">'.__('deactivate','wp-cerber').'</a>)';
 	else {
@@ -1276,7 +1272,7 @@ function cerber_show_help() {
 
                     <p style="font-size: 120%;">To get the most out of Cerber Security, you need to configure the plugin properly</p>
 
-                    <p style="font-size: 120%;">Please read this first: <a href="https://wpcerber.com/getting-started/">Getting Started Guide</a></p>
+                    <p style="font-size: 120%;">Please read this first: <a target="_blank" href="https://wpcerber.com/getting-started/">Getting Started Guide</a></p>
 
                     <p style="clear: both;"></p>
 
@@ -1284,8 +1280,8 @@ function cerber_show_help() {
 
                     <?php echo $support; ?>
 
-                    <p><span class="dashicons dashicons-before dashicons-book-alt"></span> <a href="https://wpcerber.com/toc/" target="_blank">Read articles on wpcerber.com</a></p>
-                    <p><span class="dashicons dashicons-before dashicons-format-chat"></span> <a href="https://wordpress.org/support/plugin/wp-cerber">Get answer on the support forum</a></p>
+                    <p><span class="dashicons dashicons-before dashicons-book-alt"></span> <a target="_blank" href="https://wpcerber.com/toc/">Read articles on wpcerber.com</a></p>
+                    <p><span class="dashicons dashicons-before dashicons-format-chat"></span> <a target="_blank" href="https://wordpress.org/support/plugin/wp-cerber">Get answer on the support forum</a></p>
 
 
                     <form style="margin-top: 2em;" action="https://wpcerber.com" target="_blank">
@@ -1298,9 +1294,9 @@ function cerber_show_help() {
                     <p>Traffic Inspector is a set of specialized request inspection algorithms that acts as an additional protection layer (firewall) for your WordPress</p>
 
                     <p>
-                        <span class="dashicons dashicons-before dashicons-book-alt"></span> <a href="https://wpcerber.com/traffic-inspector-in-a-nutshell/">Traffic Inspector in a nutshell</a>
+                        <span class="dashicons dashicons-before dashicons-book-alt"></span> <a target="_blank" href="https://wpcerber.com/traffic-inspector-in-a-nutshell/">Traffic Inspector in a nutshell</a>
                         </p>
-                        <p><span class="dashicons dashicons-before dashicons-book-alt"></span> <a href="https://wpcerber.com/wordpress-traffic-inspector-how-to/">Traffic Inspector and logging how to</a>
+                        <p><span class="dashicons dashicons-before dashicons-book-alt"></span> <a target="_blank" href="https://wpcerber.com/wordpress-traffic-inspector-how-to/">Traffic Inspector and logging how to</a>
                     </p>
 
 
@@ -1308,9 +1304,9 @@ function cerber_show_help() {
                 <td>
                     <h3>What is IP address of your computer?</h3>
 
-                    <p>To find out your current IP address go to this page: <a href="https://wpcerber.com/what-is-my-ip/">What is my IP</a>. If you see a different IP address on the Activity tab for your login or logout events you probably need to check <b><?php _e('My site is behind a reverse proxy','wp-cerber'); ?></b>.</p>
+                    <p>To find out your current IP address go to this page: <a target="_blank" href="https://wpcerber.com/what-is-my-ip/">What is my IP</a>. If you see a different IP address on the Activity tab for your login or logout events you probably need to check <b><?php _e('My site is behind a reverse proxy','wp-cerber'); ?></b>.</p>
                     <p>
-                        <span class="dashicons dashicons-before dashicons-book-alt"></span> <a href="https://wpcerber.com/wordpress-ip-address-detection/">Solving problem with incorrect IP address detection</a>
+                        <span class="dashicons dashicons-before dashicons-book-alt"></span> <a target="_blank" href="https://wpcerber.com/wordpress-ip-address-detection/">Solving problem with incorrect IP address detection</a>
                     </p>
 
 
@@ -1320,9 +1316,9 @@ function cerber_show_help() {
                         The Cerber antispam and bot detection engine is capable to protect virtually any form on a website. It’s a great alternative to reCAPTCHA.
                     </p>
                     <p>
-                        <span class="dashicons dashicons-before dashicons-book-alt"></span> <a href="https://wpcerber.com/how-to-stop-spam-user-registrations-wordpress/">How to stop spam user registrations on your WordPress</a>
+                        <span class="dashicons dashicons-before dashicons-book-alt"></span> <a target="_blank" href="https://wpcerber.com/how-to-stop-spam-user-registrations-wordpress/">How to stop spam user registrations on your WordPress</a>
                         </p>
-                        <p><span class="dashicons dashicons-before dashicons-book-alt"></span> <a href="https://wpcerber.com/antispam-for-wordpress-contact-forms/">Antispam protection for contact forms</a>
+                        <p><span class="dashicons dashicons-before dashicons-book-alt"></span> <a target="_blank" href="https://wpcerber.com/antispam-for-wordpress-contact-forms/">Antispam protection for contact forms</a>
                     </p>
 
 
@@ -1333,17 +1329,17 @@ function cerber_show_help() {
                         Before you start receiving notifications you need to install a free Pushbullet mobile application on your mobile device or free browser extension available for Chrome, Firefox and Opera.
                     </p>
                     <p><span class="dashicons dashicons-before dashicons-book-alt"></span>
-                        <a href="https://wpcerber.com/wordpress-mobile-and-browser-notifications-pushbullet/">A three steps instruction how to set up push notifications</a>
+                        <a target="_blank" href="https://wpcerber.com/wordpress-mobile-and-browser-notifications-pushbullet/">A three steps instruction how to set up push notifications</a>
                     </p>
                     <p><span class="dashicons dashicons-before dashicons-book-alt"></span>
-                        <a href="https://wpcerber.com/wordpress-notifications-made-easy/">How to get alerts for specific activity on your website</a>
+                        <a target="_blank" href="https://wpcerber.com/wordpress-notifications-made-easy/">How to get alerts for specific activity on your website</a>
                     </p>
 
                     <h3>WordPress security explained</h3>
-                    <p><span class="dashicons dashicons-before dashicons-book-alt"></span> <a href="https://wpcerber.com/why-recaptcha-does-not-protect-wordpress/">Why does reCAPTCHA not protect WordPress against bots and brute-force attacks?</a></p>
-                    <p><span class="dashicons dashicons-before dashicons-book-alt"></span> <a href="https://wpcerber.com/why-we-need-to-use-custom-login-url/">Why you need to use Custom login URL for your WordPress</a></p>
-                    <p><span class="dashicons-before dashicons-book-alt"></span> <a href="https://wpcerber.com/why-its-important-to-restrict-access-to-rest-api/">Why it's important to restrict access to the WP REST API</a></p>
-                    <p><span class="dashicons-before dashicons-book-alt"></span> <a href="https://wpcerber.com/mitigating-brute-force-dos-and-ddos-attacks/">Brute-force, DoS, and DDoS attacks - what's the difference?</a></p>
+                    <p><span class="dashicons dashicons-before dashicons-book-alt"></span> <a target="_blank" href="https://wpcerber.com/why-recaptcha-does-not-protect-wordpress/">Why does reCAPTCHA not protect WordPress against bots and brute-force attacks?</a></p>
+                    <p><span class="dashicons dashicons-before dashicons-book-alt"></span> <a target="_blank" href="https://wpcerber.com/why-we-need-to-use-custom-login-url/">Why you need to use Custom login URL for your WordPress</a></p>
+                    <p><span class="dashicons-before dashicons-book-alt"></span> <a target="_blank" href="https://wpcerber.com/why-its-important-to-restrict-access-to-rest-api/">Why it's important to restrict access to the WP REST API</a></p>
+                    <p><span class="dashicons-before dashicons-book-alt"></span> <a target="_blank" href="https://wpcerber.com/mitigating-brute-force-dos-and-ddos-attacks/">Brute-force, DoS, and DDoS attacks - what's the difference?</a></p>
                 </td>
             </tr>
         </table>
@@ -2558,8 +2554,11 @@ function cerber_traffic_page(){
 			cerber_show_activity();
 	}
 
-	echo '</div></div>';
+	echo '</div>';
 
+	?>
+    </div>
+    <?php
 }
 
 

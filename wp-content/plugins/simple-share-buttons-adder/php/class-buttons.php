@@ -160,9 +160,9 @@ class Buttons {
 			 ||
 			 ( is_single() && ( 'Y' !== $arr_settings['ssba_new_buttons'] && 'Y' === $arr_settings['ssba_posts'] || ( 'Y' === $arr_settings['ssba_new_buttons'] && 'Y' === $arr_settings['ssba_plus_posts'] ) ) )
 			 ||
-			 ( is_category() && 'Y' === ( 'Y' !== $arr_settings['ssba_new_buttons'] && 'Y' === $arr_settings['ssba_cats_archs'] || ( 'Y' === $arr_settings['ssba_new_buttons'] && 'Y' === $arr_settings['ssba_plus_cats_archs'] ) ) )
+			 ( is_category() && ( 'Y' !== $arr_settings['ssba_new_buttons'] && 'Y' === $arr_settings['ssba_cats_archs'] || ( 'Y' === $arr_settings['ssba_new_buttons'] && 'Y' === $arr_settings['ssba_plus_cats_archs'] ) ) )
 			 ||
-			 ( is_archive() && 'Y' === ( 'Y' !== $arr_settings['ssba_new_buttons'] && 'Y' === $arr_settings['ssba_cats_archs'] || ( 'Y' === $arr_settings['ssba_new_buttons'] && 'Y' === $arr_settings['ssba_plus_cats_archs'] ) ) )
+			 ( is_archive() && ( 'Y' !== $arr_settings['ssba_new_buttons'] && 'Y' === $arr_settings['ssba_cats_archs'] || ( 'Y' === $arr_settings['ssba_new_buttons'] && 'Y' === $arr_settings['ssba_plus_cats_archs'] ) ) )
 			 ||
 			 ( ( is_home() || is_front_page() ) && ( 'Y' !== $arr_settings['ssba_new_buttons'] && 'Y' === $arr_settings['ssba_homepage'] || ( 'Y' === $arr_settings['ssba_new_buttons'] && 'Y' === $arr_settings['ssba_plus_homepage'] ) ) )
 			 ||
